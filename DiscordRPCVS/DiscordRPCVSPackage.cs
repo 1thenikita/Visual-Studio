@@ -106,14 +106,25 @@ namespace DiscordRPCVS
         }
 
 #pragma warning disable VSTHRD100 // Avoid async void methods
+        /// <summary>
+        /// Handles switching between windows.
+        /// </summary>
+        /// <param name="windowActivated">The window switched to.</param>
+        /// <param name="lastWindow">The windows switched from</param>
         private async void OnWindowSwitch(Window windowActivated, Window lastWindow)
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync();
             if (windowActivated.Document != null)
-                await UpdatePresenceAsync(ide.ActiveDocument);
+                await UpdatePresenceAsync(windowActivated.Document);
         }
 #pragma warning restore VSTHRD100 // Avoid async void methods
 
+        /// <summary>
+        /// Updates the presence with the document
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="overrideTimestampReset"></param>
+        /// <returns></returns>
         internal async Task UpdatePresenceAsync(Document document, bool overrideTimestampReset = false)
         {
             try
@@ -137,7 +148,7 @@ namespace DiscordRPCVS
                 };
 
                 if (Settings.isFileNameShown && document != null)
-                    Presence.Details = Path.GetFileName(document.FullName);
+                    Presence.State = Path.GetFileName(document.FullName);
 
                 if (Settings.isSolutionNameShown && ide.Solution != null)
                 {
@@ -145,9 +156,7 @@ namespace DiscordRPCVS
                     Presence.Assets = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? new Assets()
                     {
                         LargeImageKey = ideVersionProperties[0],
-                        LargeImageText = $"Visual Studio {ideVersionProperties[1]}",
-                        SmallImageKey = "",
-                        SmallImageText = ""
+                        LargeImageText = $"Visual Studio {ideVersionProperties[1]}"
                     } : Presence.Assets;
                 }
 

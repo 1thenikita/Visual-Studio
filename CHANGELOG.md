@@ -1,4 +1,12 @@
-# Changelog
+﻿# Changelog
+
+## [v5.1.1] (23-6-2019)
+
+**WHOOPSIES!**
+- Created more bugs 😂 (see below).
+
+**BUGS FIXED**
+- Fixed file name not shown.
 
 ## [v5.1] (23-6-2019)
 
