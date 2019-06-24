@@ -67,8 +67,9 @@ namespace DiscordRPCVS
             { new string[]{ ".lua" }, new string[] { "lua", "Lua" } }
         };
         internal static DTE ide;
-        internal static bool InitializedTimestamp { get; set; }
-        internal static Timestamps InitialTimestamp { get; set; }
+        internal static bool InitializedTimestamp;
+        internal static Timestamps CurrentTimestamps;
+        internal static Timestamps InitialTimestamps;
         internal static Version version;
         internal static Settings Settings => Settings.Default;
         internal static RichPresence Presence;
@@ -94,8 +95,9 @@ namespace DiscordRPCVS
                 ide.Events.WindowEvents.WindowActivated += OnWindowSwitch;
                 version = new Version(ide.Version);
 
-                ideVersionProperties = new string[] { version.Major == 16 ? "vs2019" : "vs2017", version.Major == 16 ? "2019" : "2017" };
-
+                bool vs2019 = version.Major == 16;
+                ideVersionProperties = new string[] { vs2019 ? "vs2019" : "vs2017", vs2019 ? "2019" : "2017" };
+                
                 if (Settings.loadOnStartup)
                     await UpdatePresenceAsync(ide.ActiveDocument);
 
@@ -133,12 +135,6 @@ namespace DiscordRPCVS
             try
             {
                 await JoinableTaskFactory.SwitchToMainThreadAsync();
-                string[] key = null;
-
-                foreach (string[] langkey in Languages.Keys)
-                    if (Array.IndexOf(langkey, document != null ? Path.GetExtension(document.FullName).ToLower() : string.Empty) > -1 || Array.IndexOf(langkey, Path.GetFileName(document != null ? document.FullName : string.Empty)) > -1)
-                        key = langkey;
-
                 Presence = new RichPresence();
                 if (Settings.enabled)
                 {
@@ -149,21 +145,29 @@ namespace DiscordRPCVS
                     }
                     else
                     {
+                        string[] key = null;
+                        foreach (string[] langkey in Languages.Keys)
+                            if (Array.IndexOf(langkey, document != null ? Path.GetExtension(document.FullName).ToLower() : string.Empty) > -1 || Array.IndexOf(langkey, Path.GetFileName(document != null ? document.FullName : string.Empty)) > -1)
+                                key = langkey;
+
+                        bool supported = key != null && Languages.ContainsKey(key);
                         Assets = new Assets()
                         {
-                            LargeImageKey = Settings.largeLanguage ? key != null && Languages.ContainsKey(key) ? Languages[key][0] : "text" : ideVersionProperties[1],
-                            LargeImageText = Settings.largeLanguage ? key != null && Languages.ContainsKey(key) ? Languages[key][1] : "Unknown document type" : $"Visual Studio {ideVersionProperties[1]}",
-                            SmallImageKey = Settings.largeLanguage ? ideVersionProperties[0] : key != null && Languages.ContainsKey(key) ? Languages[key][0] : "text",
-                            SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersionProperties[1]}" : key != null && Languages.ContainsKey(key) ? Languages[key][1] : "Unknown document type"
+                            LargeImageKey = Settings.largeLanguage ? supported ? Languages[key][0] : "text" : ideVersionProperties[1],
+                            LargeImageText = Settings.largeLanguage ? supported ? Languages[key][1] : "Unknown document type" : $"Visual Studio {ideVersionProperties[1]}",
+                            SmallImageKey = Settings.largeLanguage ? ideVersionProperties[0] : supported ? Languages[key][0] : "text",
+                            SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersionProperties[1]}" : supported ? Languages[key][1] : "Unknown document type"
                         };
+                        key = null;
 
-                        if (Settings.showFileName && document != null)
-                            Presence.Details = Path.GetFileName(document.FullName);
+                        if (Settings.showFileName)
+                            Presence.Details = document != null ? Path.GetFileName(document.FullName) : "No file.";
 
-                        if (Settings.showSolutionName && ide.Solution != null)
+                        if (Settings.showSolutionName)
                         {
-                            Presence.State = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? "Idling" : $"Developing {Path.GetFileNameWithoutExtension(ide.Solution.FullName)}";
-                            Presence.Assets = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? new Assets()
+                            bool idling = ide.Solution == null || ide.Solution.FullName == string.Empty || ide.Solution.FullName == null;
+                            Presence.State = idling ? "Idling" : $"Developing {Path.GetFileNameWithoutExtension(ide.Solution.FullName)}";
+                            Assets = idling ? new Assets()
                             {
                                 LargeImageKey = ideVersionProperties[0],
                                 LargeImageText = $"Visual Studio {ideVersionProperties[1]}"
@@ -173,14 +177,15 @@ namespace DiscordRPCVS
                         if (Settings.showTimestamp && !InitializedTimestamp)
                         {
                             Presence.Timestamps = new Timestamps() { Start = DateTime.UtcNow };
-                            InitialTimestamp = Presence.Timestamps;
+                            InitialTimestamps = Presence.Timestamps;
                             InitializedTimestamp = true;
                         }
 
-                        if (Settings.resetTimestamp && InitializedTimestamp && Settings.showTimestamp && !overrideTimestampReset)
+                        if (Settings.resetTimestamp && Settings.showTimestamp && !overrideTimestampReset)
                             Presence.Timestamps = new Timestamps() { Start = DateTime.UtcNow };
-                        else if (Settings.showTimestamp && !Settings.resetTimestamp || Settings.showTimestamp && overrideTimestampReset)
-                            Presence.Timestamps = InitialTimestamp;
+                        else if (Settings.showTimestamp && (!Settings.resetTimestamp || overrideTimestampReset))
+                            Presence.Timestamps = InitialTimestamps;
+                        CurrentTimestamps = Presence.Timestamps;
                     }
 
                     if (!discordClient.IsInitialized)
@@ -188,6 +193,8 @@ namespace DiscordRPCVS
 
                     Presence.Assets = Assets;
                     discordClient.SetPresence(Presence);
+                    Presence = null;
+                    Assets = null;
                 }
                 else if (!Settings.enabled && discordClient.IsInitialized)
                     discordClient.Deinitialize();
