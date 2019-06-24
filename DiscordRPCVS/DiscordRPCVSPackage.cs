@@ -40,9 +40,10 @@ namespace DiscordRPCVS
     {
         public const string PackageGuidString = "ab4abbbf-2c58-4fb3-8d6f-651811a796aa";
         internal static DiscordRpcClient discordClient = new DiscordRpcClient("551675228691103796");
+        internal static Assets Assets;
         static readonly Dictionary<string[], string[]> Languages = new Dictionary<string[], string[]>
         {
-            { new string[] { ".h", ".cc", ".hh", ".cpp", ".ipp", ".inl", ".c++", ".h++" }, new string[] { "cpp", "C++" } },
+            { new string[] { ".h", ".cc", ".hh", ".cpp", ".ipp", ".inl", ".c++", ".h++", ".hpp" }, new string[] { "cpp", "C++" } },
             { new string[] { ".go" }, new string[] { "go", "GO" } },
             { new string[] { ".php" }, new string[] { "php", "PHP" } },
             { new string[] { ".c" }, new string[] { "c", "C" } },
@@ -138,58 +139,54 @@ namespace DiscordRPCVS
                     if (Array.IndexOf(langkey, document != null ? Path.GetExtension(document.FullName).ToLower() : string.Empty) > -1 || Array.IndexOf(langkey, Path.GetFileName(document != null ? document.FullName : string.Empty)) > -1)
                         key = langkey;
 
-                Presence = new RichPresence()
-                {
-                    Assets = new Assets()
-                    {
-                        LargeImageKey = Settings.largeLanguage ? key != null && Languages.ContainsKey(key) ? Languages[key][0] : "text" : ideVersionProperties[1],
-                        LargeImageText = Settings.largeLanguage ? key != null && Languages.ContainsKey(key) ? Languages[key][1] : "Unknown document type" : $"Visual Studio {ideVersionProperties[1]}",
-                        SmallImageKey = Settings.largeLanguage ? ideVersionProperties[0] : key != null && Languages.ContainsKey(key) ? Languages[key][0] : "text",
-                        SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersionProperties[1]}" : key != null && Languages.ContainsKey(key) ? Languages[key][1] : "Unknown document type"
-                    }
-                };
-
-                if (Settings.secretMode)
-                {
-                    Presence.Assets = new Assets {
-                        LargeImageKey = ideVersionProperties[0],
-                        LargeImageText = $"Visual Studio {ideVersionProperties[1]}"
-                    };
-                    Presence.Details = "I'm working on something you're";
-                    Presence.State = "not allowed to know about, sorry.";
-                    return;
-                }
-
-                if (Settings.showFileName && document != null)
-                    Presence.Details = Path.GetFileName(document.FullName);
-
-                if (Settings.showSolutionName && ide.Solution != null)
-                {
-                    Presence.State = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? "Idling" : $"Developing {Path.GetFileNameWithoutExtension(ide.Solution.FullName)}";
-                    Presence.Assets = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? new Assets()
-                    {
-                        LargeImageKey = ideVersionProperties[0],
-                        LargeImageText = $"Visual Studio {ideVersionProperties[1]}"
-                    } : Presence.Assets;
-                }
-
-                if (Settings.showTimestamp && !InitializedTimestamp)
-                {
-                    Presence.Timestamps = new Timestamps() { Start = DateTime.UtcNow };
-                    InitialTimestamp = Presence.Timestamps;
-                    InitializedTimestamp = true;
-                }
-
-                if (Settings.resetTimestamp && InitializedTimestamp && Settings.showTimestamp && !overrideTimestampReset)
-                    Presence.Timestamps = new Timestamps() { Start = DateTime.UtcNow };
-                else if (Settings.showTimestamp && !Settings.resetTimestamp || Settings.showTimestamp && overrideTimestampReset)
-                    Presence.Timestamps = InitialTimestamp;
-
+                Presence = new RichPresence();
                 if (Settings.enabled)
                 {
+                    if (Settings.secretMode)
+                    {
+                        Presence.Details = "I'm working on something you're";
+                        Presence.State = "not allowed to know about, sorry.";
+                    }
+                    else
+                    {
+                        Assets = new Assets()
+                        {
+                            LargeImageKey = Settings.largeLanguage ? key != null && Languages.ContainsKey(key) ? Languages[key][0] : "text" : ideVersionProperties[1],
+                            LargeImageText = Settings.largeLanguage ? key != null && Languages.ContainsKey(key) ? Languages[key][1] : "Unknown document type" : $"Visual Studio {ideVersionProperties[1]}",
+                            SmallImageKey = Settings.largeLanguage ? ideVersionProperties[0] : key != null && Languages.ContainsKey(key) ? Languages[key][0] : "text",
+                            SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersionProperties[1]}" : key != null && Languages.ContainsKey(key) ? Languages[key][1] : "Unknown document type"
+                        };
+
+                        if (Settings.showFileName && document != null)
+                            Presence.Details = Path.GetFileName(document.FullName);
+
+                        if (Settings.showSolutionName && ide.Solution != null)
+                        {
+                            Presence.State = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? "Idling" : $"Developing {Path.GetFileNameWithoutExtension(ide.Solution.FullName)}";
+                            Presence.Assets = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? new Assets()
+                            {
+                                LargeImageKey = ideVersionProperties[0],
+                                LargeImageText = $"Visual Studio {ideVersionProperties[1]}"
+                            } : Presence.Assets;
+                        }
+
+                        if (Settings.showTimestamp && !InitializedTimestamp)
+                        {
+                            Presence.Timestamps = new Timestamps() { Start = DateTime.UtcNow };
+                            InitialTimestamp = Presence.Timestamps;
+                            InitializedTimestamp = true;
+                        }
+
+                        if (Settings.resetTimestamp && InitializedTimestamp && Settings.showTimestamp && !overrideTimestampReset)
+                            Presence.Timestamps = new Timestamps() { Start = DateTime.UtcNow };
+                        else if (Settings.showTimestamp && !Settings.resetTimestamp || Settings.showTimestamp && overrideTimestampReset)
+                            Presence.Timestamps = InitialTimestamp;
+                    }
+
                     if (!discordClient.IsInitialized)
                         discordClient.Initialize();
 
+                    Presence.Assets = Assets;
                     discordClient.SetPresence(Presence);
                 }
                 else if (!Settings.enabled && discordClient.IsInitialized)

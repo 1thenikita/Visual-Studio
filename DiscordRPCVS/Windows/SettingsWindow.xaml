@@ -125,7 +125,7 @@
         <Border Grid.Row="8">
             <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="LoadOnStartup" Content="Load on startup"/>
         </Border>
-        <Border Padding="0,40,0,0" Grid.Row="9">
+        <Border Padding="0,37,0,0" Grid.Row="9">
             <Button x:Name="SaveButton" Height="30" Style="{StaticResource ResourceKey=Default}" Content="Save and Close" Click="SaveButton_Click"/>
         </Border>
     </Grid>

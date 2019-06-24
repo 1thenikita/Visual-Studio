@@ -5,12 +5,11 @@
         <DisplayName>Discord RPC for Visual Studio 2017 and 2019</DisplayName>
         <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017 and 2019.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=VisualDevelopment.drpcvs2019</MoreInfo>
-        <License>https://github.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/blob/master/LICENSE</License>
+        <License>Resources\LICENSE.txt</License>
         <ReleaseNotes>https://github.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/blob/master/CHANGELOG.md</ReleaseNotes>
         <Icon>Resources\DiscordRPCVSPackage.ico</Icon>
         <PreviewImage>Resources\DiscordRPCVSPackage.ico</PreviewImage>
         <Tags>development,discord,discordrpc,presence,rich,rpc,visual</Tags>
-        <Preview>true</Preview>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,)" />

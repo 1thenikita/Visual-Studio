@@ -3,8 +3,9 @@
 ## [v5.2] (24-6-2019)
 
 **CHANGES**
+- Better perfomance.
 - Added secret mode.
-- Added toggle to load on startup.
+- Added load on startup toggle.
 
 ## [v5.1.2] (24-6-2019)
 

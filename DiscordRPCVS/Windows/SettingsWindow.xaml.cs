@@ -18,6 +18,8 @@ namespace DiscordRPCVS
             IsTimestampShown.IsChecked = DiscordRPCVSPackage.Settings.showTimestamp;
             IsTimestampResetEnabled.IsChecked = DiscordRPCVSPackage.Settings.resetTimestamp;
             IsLanguageImageLarge.IsChecked = DiscordRPCVSPackage.Settings.largeLanguage;
+            SecretMode.IsChecked = DiscordRPCVSPackage.Settings.secretMode;
+            LoadOnStartup.IsChecked = DiscordRPCVSPackage.Settings.loadOnStartup;
             IsTimestampShown_ValueChanged(sender, e);
         }
 
@@ -38,6 +40,8 @@ namespace DiscordRPCVS
             DiscordRPCVSPackage.Settings.showTimestamp = (bool)IsTimestampShown.IsChecked;
             DiscordRPCVSPackage.Settings.resetTimestamp = (bool)IsTimestampResetEnabled.IsChecked;
             DiscordRPCVSPackage.Settings.largeLanguage = (bool)IsLanguageImageLarge.IsChecked;
+            DiscordRPCVSPackage.Settings.secretMode = (bool)SecretMode.IsChecked;
+            DiscordRPCVSPackage.Settings.loadOnStartup = (bool)LoadOnStartup.IsChecked;
             DiscordRPCVSPackage.Settings.Save();
             await SettingsCommand.Instance.package.JoinableTaskFactory.SwitchToMainThreadAsync();
             await ((DiscordRPCVSPackage)SettingsCommand.Instance.package).UpdatePresenceAsync(DiscordRPCVSPackage.ide.ActiveDocument, true);

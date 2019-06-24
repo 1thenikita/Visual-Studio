@@ -20,6 +20,8 @@ Here's a demonstration of how it looks in Discord
 * The ability to toggle whether or not your timestamp resets on Discord when switching files.
 * The ability to toggle whether to use large or small images for your file type.
 * The ability to turn Rich Presence completely on or off.
+* The ability to toggle it starting up at startup.
+* The ability to use secret mode.
 
 # Toggling Display
 A neat feature with this extension compared to others is you can completely customize your Rich Presence and display only what you want.
