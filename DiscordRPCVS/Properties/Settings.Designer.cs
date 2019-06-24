@@ -12,7 +12,7 @@ namespace DiscordRPCVS.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,72 +26,96 @@ namespace DiscordRPCVS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isPresenceEnabled {
+        public bool enabled {
             get {
-                return ((bool)(this["isPresenceEnabled"]));
+                return ((bool)(this["enabled"]));
             }
             set {
-                this["isPresenceEnabled"] = value;
+                this["enabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isFileNameShown {
+        public bool showFileName {
             get {
-                return ((bool)(this["isFileNameShown"]));
+                return ((bool)(this["showFileName"]));
             }
             set {
-                this["isFileNameShown"] = value;
+                this["showFileName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isSolutionNameShown {
+        public bool showSolutionName {
             get {
-                return ((bool)(this["isSolutionNameShown"]));
+                return ((bool)(this["showSolutionName"]));
             }
             set {
-                this["isSolutionNameShown"] = value;
+                this["showSolutionName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isTimestampShown {
+        public bool showTimestamp {
             get {
-                return ((bool)(this["isTimestampShown"]));
+                return ((bool)(this["showTimestamp"]));
             }
             set {
-                this["isTimestampShown"] = value;
+                this["showTimestamp"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isTimestampResetEnabled {
+        public bool resetTimestamp {
             get {
-                return ((bool)(this["isTimestampResetEnabled"]));
+                return ((bool)(this["resetTimestamp"]));
             }
             set {
-                this["isTimestampResetEnabled"] = value;
+                this["resetTimestamp"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isLanguageImageLarge {
+        public bool largeLanguage {
             get {
-                return ((bool)(this["isLanguageImageLarge"]));
+                return ((bool)(this["largeLanguage"]));
             }
             set {
-                this["isLanguageImageLarge"] = value;
+                this["largeLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool secretMode {
+            get {
+                return ((bool)(this["secretMode"]));
+            }
+            set {
+                this["secretMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool loadOnStartup {
+            get {
+                return ((bool)(this["loadOnStartup"]));
+            }
+            set {
+                this["loadOnStartup"] = value;
             }
         }
     }

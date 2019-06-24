@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [v5.2] (24-6-2019)
+
+**CHANGES**
+- Added secret mode.
+- Added toggle to load on startup.
+
 ## [v5.1.2] (24-6-2019)
 
 **WHOOPSIES!**
@@ -21,6 +27,7 @@
 
 **CHANGES**
 - Code cleanup.
+- Proper activity log logging.
 - Added Rust, TOML and Lua.
 - Fixed icons being cut off.
 

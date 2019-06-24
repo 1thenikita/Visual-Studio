@@ -2,22 +2,28 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DiscordRPCVS.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="isPresenceEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="enabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="isFileNameShown" Type="System.Boolean" Scope="User">
+    <Setting Name="showFileName" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="isSolutionNameShown" Type="System.Boolean" Scope="User">
+    <Setting Name="showSolutionName" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="isTimestampShown" Type="System.Boolean" Scope="User">
+    <Setting Name="showTimestamp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="isTimestampResetEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="resetTimestamp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="isLanguageImageLarge" Type="System.Boolean" Scope="User">
+    <Setting Name="largeLanguage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="secretMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="loadOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
