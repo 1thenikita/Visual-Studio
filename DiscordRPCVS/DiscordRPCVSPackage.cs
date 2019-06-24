@@ -148,11 +148,11 @@ namespace DiscordRPCVS
                 };
 
                 if (Settings.isFileNameShown && document != null)
-                    Presence.State = Path.GetFileName(document.FullName);
+                    Presence.Details = Path.GetFileName(document.FullName);
 
                 if (Settings.isSolutionNameShown && ide.Solution != null)
                 {
-                    Presence.Details = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? "Idling" : $"Developing {ide.Solution.FullName}";
+                    Presence.State = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? "Idling" : $"Developing {Path.GetFileNameWithoutExtension(ide.Solution.FullName)}";
                     Presence.Assets = ide.Solution.FullName == string.Empty || ide.Solution.FullName == null ? new Assets()
                     {
                         LargeImageKey = ideVersionProperties[0],

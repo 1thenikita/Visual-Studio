@@ -1,5 +1,14 @@
 ﻿# Changelog
 
+## [v5.1.2] (24-6-2019)
+
+**WHOOPSIES!**
+- Created more bugs 😂 (again) (see below).
+
+**BUGS FIXED**
+- Fixed reverse order of state and details.
+- Fixed full path of solution to state.
+
 ## [v5.1.1] (23-6-2019)
 
 **WHOOPSIES!**
