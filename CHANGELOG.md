@@ -2,9 +2,11 @@
 
 ## [v5.2.1] (24-6-2019)
 
+**CHANGES**
+- More optimizations.
+
 **BUGS FIXED**
 - Fixed wrong icon when idling.
-- More optimizations.
 
 ## [v5.2] (24-6-2019)
 
