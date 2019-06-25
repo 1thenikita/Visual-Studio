@@ -1,14 +1,70 @@
 ﻿# Changelog
 
-## [v5.2.1] (24-6-2019)
+## [v5.3] (25-6-2019)
+###### The optimization update.
+
+>_FAST AS FUCK!_
 
 **CHANGES**
-- More optimizations.
+- Huge optimizations.
+- Added license, and changelog to installer and more info url.
+- Made changelog more excited. 
 
-**BUGS FIXED**
+>_WEW!_
+
+**SQUASHED BUGS**
 - Fixed wrong icon when idling.
+- Fixed icon staying on secret mode.
+- Timestamp resetting when enabled if changed to a window with no document.
+
+<details>
+<summary>Code change</summary>
+<p>
+before
+
+```csharp
+string[] key = null;
+foreach (string[] langkey in Languages.Keys)
+    if (Array.IndexOf(langkey, document != null ? Path.GetExtension(document.FullName).ToLower() : string.Empty) > -1 || Array.IndexOf(langkey, Path.GetFileName(document != null ? document.FullName : string.Empty)) > -1)
+        key = langkey;
+
+bool supported = key != null && Languages.ContainsKey(key);
+Assets = new Assets()
+{
+    LargeImageKey = Settings.largeLanguage ? supported ? Languages[key][0] : "text" : ideVersionProperties[1],
+    LargeImageText = Settings.largeLanguage ? supported ? Languages[key][1] : "Unknown document type" : $"Visual Studio {ideVersionProperties[1]}",
+    SmallImageKey = Settings.largeLanguage ? ideVersionProperties[0] : supported ? Languages[key][0] : "text",
+    SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersionProperties[1]}" : supported ? Languages[key][1] : "Unknown document type"
+};
+```
+
+after
+
+```csharp
+string[] language = null;
+if (document != null)
+{
+    string filename = Path.GetFileName(document.FullName).ToLower();
+    string ext = Path.GetExtension(filename);
+    language = Languages.Where(lang => Array.IndexOf(lang.Key, filename) > -1 || Array.IndexOf(lang.Key, ext) > -1)?.ToList()?[0].Value;
+}
+
+bool supported = language != null;
+Assets = new Assets()
+{
+    LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : $"vs{ideVersion}",
+    LargeImageText = Settings.largeLanguage ? supported ? language[1] : "Unrecognized extension" : $"Visual Studio {ideVersion}",
+    SmallImageKey = Settings.largeLanguage ? $"vs{ideVersion}" : supported ? language[0] : "text",
+    SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersion}" : supported ? language[1] : "Unrecognized extension"
+};
+```
+</p>
+</details>
 
 ## [v5.2] (24-6-2019)
+###### The secret update.
+
+>_STOP HIDING YOUR SECRETS!_
 
 **CHANGES**
 - Better perfomance.
@@ -16,23 +72,26 @@
 - Added load on startup toggle.
 
 ## [v5.1.2] (24-6-2019)
+###### Bug fixes.
 
-**WHOOPSIES!**
-- Created more bugs 😂 (again) (see below).
+>_WHOOPS!_
 
-**BUGS FIXED**
+**SQUASHED BUGS**
 - Fixed reverse order of state and details.
 - Fixed full path of solution to state.
 
 ## [v5.1.1] (23-6-2019)
+###### Bug fixes.
 
-**WHOOPSIES!**
-- Created more bugs 😂 (see below).
+>_WHOOPS! HOW DID THAT HAPPEN?_
 
-**BUGS FIXED**
+**SQUASHED BUGS**
 - Fixed file name not shown.
 
 ## [v5.1] (23-6-2019)
+###### The proper update.
+
+>_SQUACKY CLEAN!_
 
 **CHANGES**
 - Code cleanup.
@@ -40,25 +99,38 @@
 - Added Rust, TOML and Lua.
 - Fixed icons being cut off.
 
-**BUGS FIXED**
+>_UH OH!_
+
+**SQUASHED BUGS**
 - Fixed extension crashing on Visual Studio 2017.
 
 ## [v5] (6-6-2019)
+###### The formatting update.
+
+>_FANTASTIC!_
 
 **CHANGES**
 - Added language formatting, proper name will be shown as text.
 - Code cleanup.
 - Text document icon will now display instead of Visual Studio icon when editing a file that is not supported.
 
-**BUGS FIXED**
+>_HOW DID THAT HAPPEN?_
+
+**SQUASHED BUGS**
 - Visual Studio crashes on disable.
 
 ## [v4.14] (1-6-2019)
+###### The sharp update.
+
+>_RAZOR SHARP!_
 
 **CHANGES**
 - Added cshtml and razor file types.
 
 ## [v4] (18-5-2019)
+###### The rewrite: end game.
+
+>_GOOD BYE DEPRECATED SHIT!_
 
 **CHANGES**
 - Now using lachee's [Discord Rich Presence library](https://github.com/lachee/discord-rpc-csharp)!
@@ -67,21 +139,26 @@
 - Optimized code.
 
 ## [v3.1] (15-5-2019)
+###### The fixes update.
 
-**BUGS FIXED**
+>_MHM_
+
+**SQUASHED BUGS**
 - Rich Presence timestamp will reset on settings change.
 
 ## [v3] (14-5-2019)
+###### The rewrite.
 
-**CHANGES (COMPLETE REWRITE)**
+>_REWRITEN BETTER!_
 
+**CHANGES**
 - New settings window, for faster settings change.
 - Project now initializes the rich presence for the current document on startup.
 - Removed unnessesary assigning of null presence on startup.
-- Made installer better.
-- Added installer icon.
+- Added icon.
 - Better presence icons.
 
-**BUGS FIXED**
+>_YEET_
 
+**SQUASHED BUGS**
 - Rich Presence will stop working after switching to a non-editor window.
