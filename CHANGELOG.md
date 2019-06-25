@@ -16,6 +16,7 @@
 - Fixed wrong icon when idling.
 - Fixed icon staying on secret mode.
 - Timestamp resetting when enabled if changed to a window with no document.
+- Fixed CMake shown as text document.
 
 <details>
 <summary>Code change</summary>
