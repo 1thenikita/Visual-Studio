@@ -38,19 +38,19 @@ Assets = new Assets()
     SmallImageText = Settings.largeLanguage ? $"Visual Studio {ideVersionProperties[1]}" : supported ? Languages[key][1] : "Unknown document type"
 };
 ```
-
 after
 
 ```csharp
-string[] language = null;
+string[] language = new string[] { };
 if (document != null)
 {
     string filename = Path.GetFileName(document.FullName).ToLower();
     string ext = Path.GetExtension(filename);
-    language = Languages.Where(lang => Array.IndexOf(lang.Key, filename) > -1 || Array.IndexOf(lang.Key, ext) > -1)?.ToList()?[0].Value;
+    List<KeyValuePair<string[], string[]>> list = Languages.Where(lang => Array.IndexOf(lang.Key, filename) > -1 || Array.IndexOf(lang.Key, ext) > -1).ToList();
+    language = list.Count > 0 ? list[0].Value : new string[] { };
 }
 
-bool supported = language != null;
+bool supported = language.Length > 0;
 Assets = new Assets()
 {
     LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : $"vs{ideVersion}",
