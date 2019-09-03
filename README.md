@@ -7,8 +7,8 @@ You can install the latest release [here](https://marketplace.visualstudio.com/i
 
 Here's a demonstration of how it looks in Discord
 <p align="center"> 
-  <img src="https://raw.githubusercontent.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/master/.github/DiscordRPC%20Preview.png" />
-  <img src="https://raw.githubusercontent.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/master/.github/Preview%202.PNG" />
+  <img src="https://sorry-there-is.nothing-to-see-he.re/3mUaAn.png" />
+  <img src="https://sorry-there-is.nothing-to-see-he.re/Ay7EUL.png" />
 </p>
 
 # Features
@@ -28,8 +28,8 @@ A neat feature with this extension compared to others is you can completely cust
 
 Here's a demonstration of the settings
 <p align="center"> 
-  <img src="https://raw.githubusercontent.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/master/.github/DiscordRPC%20Tool%20menu.PNG" />
-  <img src="https://raw.githubusercontent.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/master/.github/DiscordRPC%20Settings%20menu.PNG" />
+  <img src="https://sorry-there-is.nothing-to-see-he.re/65mSaD.png" />
+  <img src="https://sorry-there-is.nothing-to-see-he.re/4wfoqY.png" />
 </p>
 
 # Contributing
