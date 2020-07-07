@@ -78,8 +78,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
-    <Content Include="LICENSE.txt" />
     <Content Include="Resources\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -92,18 +90,15 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include=".editorconfig" />
     <None Include=".github\ISSUE_TEMPLATE\bug_report.md" />
     <None Include=".github\ISSUE_TEMPLATE\feature_request.md" />
     <None Include="app.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CHANGELOG.md" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="README.md" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
