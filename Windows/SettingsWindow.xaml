@@ -1,0 +1,132 @@
+﻿<local:BaseDialogWindow x:Class="DiscordRPforVS.SettingsWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:DiscordRPforVS"
+            mc:Ignorable="d"
+            d:DesignHeight="500" d:DesignWidth="500"
+            Width="500"
+            Height="500"
+            x:Name="DiscordRPforVSSettingsWindow"
+            WindowStyle="SingleBorderWindow" Title="Discord Rich Presence Settings" Background="#FF2D2D30" Foreground="White" Loaded="DiscordRPforVSSettingsWindow_Loaded">
+    <Window.Resources>
+        <local:BitmapToImageSourceConverter x:Key="BitmapToImageSourceConverter" />
+        <Style x:Key="Default" TargetType="Button">
+            <Setter Property="BorderBrush" Value="#FF3F3F46"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Label Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF3399FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF3399FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="DefaultToggle" TargetType="ToggleButton">
+            <Setter Property="BorderBrush" Value="#FF3F3F46"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border BorderThickness="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Label Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF3399FF"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#FF3399FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF3399FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Resources >
+            <Style TargetType="Border" >
+                <Setter Property="Padding" Value="0,5,0,5" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0">
+            <Image Source="{Binding Source={x:Static local:VSPackage.Logo}, Converter={StaticResource BitmapToImageSourceConverter}}" Width="256"/>
+        </Border>
+        <Border Grid.Row="1">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="IsPresenceEnabled" Content="Enable Discord Rich Presence"/>
+        </Border>
+        <Border Grid.Row="2">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="IsFileNameShown" Content="Show file name"/>
+        </Border>
+        <Border Grid.Row="3">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="IsSolutionNameShown" Content="Show solution name"/>
+        </Border>
+        <Border Grid.Row="4">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="IsTimestampShown" Content="Show timestamp" Unchecked="IsTimestampShown_ValueChanged" Checked="IsTimestampShown_ValueChanged"/>
+        </Border>
+        <Border Grid.Row="5">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="IsTimestampResetEnabled" Content="Reset timestamp on file change"/>
+        </Border>
+        <Border Grid.Row="6">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="IsLanguageImageLarge" Content="Large language image"/>
+        </Border>
+        <Border Grid.Row="7">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="SecretMode" Content="Secret mode"/>
+        </Border>
+        <Border Grid.Row="8">
+            <ToggleButton Style="{StaticResource ResourceKey=DefaultToggle}" x:Name="LoadOnStartup" Content="Load on startup"/>
+        </Border>
+        <Border Padding="0,37,0,0" Grid.Row="9">
+            <Button x:Name="SaveButton" Height="30" Style="{StaticResource ResourceKey=Default}" Content="Save and Close" Click="SaveButton_Click"/>
+        </Border>
+    </Grid>
+</local:BaseDialogWindow>

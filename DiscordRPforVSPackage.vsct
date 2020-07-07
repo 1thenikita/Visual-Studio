@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="vsshlids.h" />
+  <Extern href="stdidcmd.h" />
+  <Commands package="guidDiscordRPforVSPackage">
+    <Menus>
+      <Menu guid="guidDiscordRPforVSPackageCmdSet" id="SubMenu" priority="0x0100">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_EXT_CUST" />
+        <Strings>
+          <ButtonText>Discord Rich Presence</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Groups>
+      <Group guid="guidDiscordRPforVSPackageCmdSet" id="SubMenuGroup" priority="0x0000">
+        <Parent guid="guidDiscordRPforVSPackageCmdSet" id="SubMenu" />
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidDiscordRPforVSPackageCmdSet" id="cmdidSettingsCommand" priority="0x0000" type="Button">
+        <Parent guid="guidDiscordRPforVSPackageCmdSet" id="SubMenuGroup" />
+        <Icon guid="guidDiscordRPforVSPackageImages" id="settingsIcon"/>
+        <Strings>
+          <ButtonText>Settings...</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidDiscordRPforVSPackageImages" href="Resources\SettingsIcon.png" usedList="settingsIcon"/>
+    </Bitmaps>
+  </Commands>
+  <Symbols>
+    <GuidSymbol name="guidDiscordRPforVSPackage" value="{ab4abbbf-2c58-4fb3-8d6f-651811a796aa}" />
+    <GuidSymbol name="guidDiscordRPforVSPackageCmdSet" value="{89a99f09-8b4e-4ab6-9652-f093fc82a47a}">
+      <IDSymbol value="0x0100" name="SubMenu" />
+      <IDSymbol value="0x0101" name="SubMenuGroup" />
+      <IDSymbol value="0xCAFE" name="cmdidSettingsCommand" />
+    </GuidSymbol>
+    <GuidSymbol name="guidDiscordRPforVSPackageImages" value="{3935FB01-B77C-4DE0-A47B-C32DF663EF18}">
+      <IDSymbol value="1" name="settingsIcon"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

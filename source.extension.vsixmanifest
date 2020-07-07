@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="VisualDevelopment.drpcvs" Version="6.0.0" Language="en-US" Publisher="VisualDevelopment" />
+        <DisplayName>Discord Rich Presence</DisplayName>
+        <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017 and 2019.</Description>
+        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=VisualDevelopment.drpcvs2019</MoreInfo>
+        <License>Resources\LICENSE.txt</License>
+        <ReleaseNotes>https://github.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/blob/master/CHANGELOG.md</ReleaseNotes>
+        <Icon>Resources\DiscordRPforVSPackage.ico</Icon>
+        <PreviewImage>Resources\Logo.png</PreviewImage>
+        <Tags>development,discord,discordrpc,presence,rich,rpc,visual</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[15.0,)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,)" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>
