@@ -92,6 +92,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include=".editorconfig" />
     <None Include=".github\ISSUE_TEMPLATE\bug_report.md" />
     <None Include=".github\ISSUE_TEMPLATE\feature_request.md" />
     <None Include="app.config">
