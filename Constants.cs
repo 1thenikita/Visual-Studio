@@ -13,6 +13,7 @@
             { new String[] { ".C" }, new String[] { "c", "C" } },
             { new String[] { ".RB", ".rbw" }, new String[] { "ruby", "Ruby" } },
             { new String[] { ".CS" }, new String[] { "csharp", "C#" } },
+            { new String[] { ".FS", ".FSI", ".FSX", ".FSSCRIPT" }, new String[] { "fsharp", "F#" } },
             { new String[] { ".TS" }, new String[] { "typescript", "Typescript" } },
             { new String[] { ".CLASS", ".JAVA" }, new String[] { "java", "Java" } },
             { new String[] { ".TXT" }, new String[] { "text", "Text document" } },
