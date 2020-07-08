@@ -1,4 +1,6 @@
-﻿namespace DiscordRPforVS
+﻿using System.Globalization;
+
+namespace DiscordRPforVS
 {
     using DiscordRPC;
     using DiscordRPforVS.Properties;
@@ -22,31 +24,6 @@
     public sealed class DiscordRPforVSPackage : AsyncPackage, IDisposable
     {
         public const String PackageGuidString = "ab4abbbf-2c58-4fb3-8d6f-651811a796aa";
-        private readonly Dictionary<String[], String[]> Languages = new Dictionary<String[], String[]>
-        {
-            { new String[] { ".H", ".CC", ".HH", ".CPP", ".IPP", ".INL", ".C++", ".H++", ".HPP" }, new String[] { "cpp", "C++" } },
-            { new String[] { ".GO" }, new String[] { "go", "GO" } },
-            { new String[] { ".PHP" }, new String[] { "php", "PHP" } },
-            { new String[] { ".C" }, new String[] { "c", "C" } },
-            { new String[] { ".RB", ".rbw" }, new String[] { "ruby", "Ruby" } },
-            { new String[] { ".CS" }, new String[] { "csharp", "C#" } },
-            { new String[] { ".TS" }, new String[] { "typescript", "Typescript" } },
-            { new String[] { ".CLASS", ".JAVA" }, new String[] { "java", "Java" } },
-            { new String[] { ".TXT" }, new String[] { "text", "Text document" } },
-            { new String[] { ".JSON" }, new String[] { "json", "JSON" } },
-            { new String[] { ".PY", ".PYW", ".PYI", ".PYX" }, new String[] { "python", "Python" } },
-            { new String[] { ".CSS" }, new String[] { "css", "CSS" } },
-            { new String[] { ".HTML" }, new String[] { "html", "Html" } },
-            { new String[] { ".JS" }, new String[] { "javascript", "Javascript" } },
-            { new String[] { "CMAKELISTS.TXT", "CMAKECACHE.TXT" }, new String[] { "cmake", "CMake" } },
-            { new String[] { ".MD", ".MARKDOWN" }, new String[] { "markdown", "Markdown" } },
-            { new String[] { ".XML" }, new String[] { "xml", "XML" } },
-            { new String[] { ".XAML" }, new String[] { "xaml", "XAML" } },
-            { new String[]{ ".CSHTML", ".RAZOR" }, new String[] { "cshtml", "CSHtml" } },
-            { new String[]{ ".RS" }, new String[] { "rust", "Rust" } },
-            { new String[]{ ".TOML" }, new String[] { "toml", "TOML" } },
-            { new String[]{ ".LUA" }, new String[] { "lua", "Lua" } }
-        };
         internal static DTE ide;
         private Boolean InitializedTimestamp;
         private Timestamps CurrentTimestamps;
@@ -54,8 +31,9 @@
         private readonly DiscordRpcClient Discord = new DiscordRpcClient("551675228691103796", logger: new DiscordLogger());
         private readonly RichPresence Presence = new RichPresence();
         private readonly Assets Assets = new Assets();
-        private String ideVersion;
-        public static Settings Settings { get; set; }
+        private String versionString;
+        private String versionImageKey;
+        public static Settings Settings { get; set; } = Settings.Default;
 
         protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
@@ -64,17 +42,22 @@
                 await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
                 ide = GetGlobalService(typeof(SDTE)) as DTE;
                 ide.Events.WindowEvents.WindowActivated += this.WindowActivated;
-                ide.Events.SolutionEvents.AfterClosing += this.SolutionAfterClosing;
+                ide.Events.SolutionEvents.BeforeClosing += this.SolutionBeforeClosing;
 
-                ActivityLog.LogInformation("Bruh", ide.Version);
-
-                this.ideVersion = new Version(ide.Version).Major == 16 ? "2019" : "2017";
+                String ideVersion = ide.Version.Split(new Char[1] { '.' })[0];
+                this.versionString = $"Visual Studio {Constants.IdeVersions[Int32.Parse(ideVersion, CultureInfo.InvariantCulture)]}";
+                this.versionImageKey = $"dev{ideVersion}";
 
                 await SettingsCommand.InitializeAsync(this).ConfigureAwait(true);
-                await base.InitializeAsync(cancellationToken, progress).ConfigureAwait(true);
+
+                if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
+                    if (!this.Discord.Initialize())
+                        ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
 
                 if (Settings.loadOnStartup)
                     await this.UpdatePresenceAsync(ide.ActiveDocument).ConfigureAwait(true);
+
+                await base.InitializeAsync(cancellationToken, progress).ConfigureAwait(true);
             }
             catch (OperationCanceledException exc)
             {
@@ -86,7 +69,7 @@
         /// Handles closing a solution
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods")]
-        private async void SolutionAfterClosing() => await this.UpdatePresenceAsync(null).ConfigureAwait(true);
+        private async void SolutionBeforeClosing() => await this.UpdatePresenceAsync(null).ConfigureAwait(true);
 
 
         /// <summary>
@@ -98,6 +81,10 @@
         private async void WindowActivated(Window windowActivated, Window lastWindow)
         {
             await this.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
+                if (!this.Discord.Initialize())
+                    ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
 
             if (windowActivated.Document != null)
                 await this.UpdatePresenceAsync(windowActivated.Document).ConfigureAwait(true);
@@ -117,9 +104,15 @@
 
                 if (!Settings.enabled)
                 {
+                    if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
+                        if (!this.Discord.Initialize())
+                            ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
+
                     this.Discord.ClearPresence();
                     return;
                 }
+
+                this.Presence.Details = this.Presence.State = this.Assets.LargeImageKey = this.Assets.LargeImageText = this.Assets.SmallImageKey = this.Assets.SmallImageText = String.Empty;
 
                 if (Settings.secretMode)
                 {
@@ -134,15 +127,15 @@
                 if (document != null)
                 {
                     String filename = Path.GetFileName(path: document.FullName).ToUpperInvariant(), ext = Path.GetExtension(filename);
-                    List<KeyValuePair<String[], String[]>> list = this.Languages.Where(lang => Array.IndexOf(lang.Key, filename) > -1 || Array.IndexOf(lang.Key, ext) > -1).ToList();
+                    List<KeyValuePair<String[], String[]>> list = Constants.Languages.Where(lang => Array.IndexOf(lang.Key, filename) > -1 || Array.IndexOf(lang.Key, ext) > -1).ToList();
                     language = list.Count > 0 ? list[0].Value : Array.Empty<String>();
                 }
 
                 Boolean supported = language.Length > 0;
-                this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : $"vs{this.ideVersion}";
-                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] : "Unrecognized extension" : $"Visual Studio {this.ideVersion}";
-                this.Assets.SmallImageKey = Settings.largeLanguage ? $"vs{this.ideVersion}" : supported ? language[0] : "text";
-                this.Assets.SmallImageText = Settings.largeLanguage ? $"Visual Studio {this.ideVersion}" : supported ? language[1] : "Unrecognized extension";
+                this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : this.versionImageKey;
+                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] : "Unrecognized extension" : this.versionString;
+                this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : "text";
+                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] : "Unrecognized extension";
 
                 if (Settings.showFileName)
                     this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : "No file.";
@@ -154,8 +147,8 @@
 
                     if (idling)
                     {
-                        this.Assets.LargeImageKey = $"vs{this.ideVersion}";
-                        this.Assets.LargeImageText = $"Visual Studio {this.ideVersion}";
+                        this.Assets.LargeImageKey = this.versionImageKey;
+                        this.Assets.LargeImageText = this.versionString;
                         this.Assets.SmallImageKey = this.Assets.SmallImageText = "";
                     }
                 }
@@ -180,7 +173,11 @@
 
             finish:;
                 this.Presence.Assets = this.Assets;
-                this.Discord.SetPresence(this.Presence);
+
+                if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
+                    if (!this.Discord.Initialize())
+                        ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
+
                 this.Discord.SetPresence(this.Presence);
             }
             catch (ArgumentException e)
