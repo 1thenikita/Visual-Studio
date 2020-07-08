@@ -20,6 +20,8 @@
             { new String[] { ".JSON" }, new String[] { "json", "JSON" } },
             { new String[] { ".PY", ".PYW", ".PYI", ".PYX" }, new String[] { "python", "Python" } },
             { new String[] { ".CSS" }, new String[] { "css", "CSS" } },
+            { new String[] { ".SCSS", ".SASS" }, new String[] { "sass", "SASS" } },
+            { new String[] { ".LESS" }, new String[] { "less", "LESS" } },
             { new String[] { ".HTML" }, new String[] { "html", "Html" } },
             { new String[] { ".JS" }, new String[] { "javascript", "Javascript" } },
             { new String[] { "CMAKELISTS.TXT", "CMAKECACHE.TXT" }, new String[] { "cmake", "CMake" } },
