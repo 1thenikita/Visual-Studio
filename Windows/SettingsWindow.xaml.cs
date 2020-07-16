@@ -14,6 +14,7 @@
 
         private void DiscordRPforVSSettingsWindow_Loaded(Object sender, RoutedEventArgs e)
         {
+            DiscordRPforVSPackage.Settings.Upgrade();
             this.IsPresenceEnabled.IsChecked = DiscordRPforVSPackage.Settings.enabled;
             this.IsFileNameShown.IsChecked = DiscordRPforVSPackage.Settings.showFileName;
             this.IsSolutionNameShown.IsChecked = DiscordRPforVSPackage.Settings.showSolutionName;
