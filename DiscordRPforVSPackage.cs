@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace DiscordRPforVS
+﻿namespace DiscordRPforVS
 {
     using DiscordRPC;
     using DiscordRPforVS.Properties;
@@ -9,21 +7,21 @@ namespace DiscordRPforVS
     using Microsoft.VisualStudio.Shell.Interop;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Threading;
 
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400, LanguageIndependentName = "Discord Rich Presence")]
     [ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
-    [Guid(PackageGuidString)]
+    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400, LanguageIndependentName = "Discord Rich Presence")]
+    [Guid("ab4abbbf-2c58-4fb3-8d6f-651811a796aa")]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideBindingPath]
     public sealed class DiscordRPforVSPackage : AsyncPackage, IDisposable
     {
-        public const String PackageGuidString = "ab4abbbf-2c58-4fb3-8d6f-651811a796aa";
         internal static DTE ide;
         private Boolean InitializedTimestamp;
         private Timestamps CurrentTimestamps;
@@ -40,6 +38,8 @@ namespace DiscordRPforVS
             try
             {
                 await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+                Settings.Upgrade();
+
                 ide = GetGlobalService(typeof(SDTE)) as DTE;
                 ide.Events.WindowEvents.WindowActivated += this.WindowActivated;
                 ide.Events.SolutionEvents.BeforeClosing += this.SolutionBeforeClosing;
