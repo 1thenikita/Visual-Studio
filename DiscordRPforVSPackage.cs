@@ -133,9 +133,9 @@
 
                 Boolean supported = language.Length > 0;
                 this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : this.versionImageKey;
-                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] : "Unrecognized extension" : this.versionString;
+                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " file" : "Unrecognized extension" : this.versionString;
                 this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : "text";
-                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] : "Unrecognized extension";
+                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " file" : "Unrecognized extension";
 
                 if (Settings.showFileName)
                     this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : "No file.";
