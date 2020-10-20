@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="VisualDevelopment.drpcvs" Version="6.0.0" Language="en-US" Publisher="VisualDevelopment" />
+        <Identity Id="VisualDevelopment.drpcvs" Version="6.0.0" Language="ru-RU" Publisher="VisualDevelopment" />
         <DisplayName>Discord Rich Presence</DisplayName>
-        <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017 and 2019.</Description>
+        <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017 and 2019.
+Расширение Discord Rich Presence для Visual Studio 2017 и 2019.
+
+Language: English and Russian (translate https://github.com/Kaboom-Corporation )
+Языки: Английский и Русский (перевод https://github.com/Kaboom-Corporation )</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=VisualDevelopment.drpcvs2019</MoreInfo>
         <License>Resources\LICENSE.txt</License>
         <ReleaseNotes>https://github.com/VisualDevelopment/DiscordRPC-for-Visual-Studio/blob/master/CHANGELOG.md</ReleaseNotes>

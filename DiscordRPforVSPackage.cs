@@ -40,6 +40,10 @@
                 await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
                 Settings.Upgrade();
 
+                // Writes the language used to the global variable
+                Settings.Default.translates = System.Globalization.CultureInfo.CurrentCulture.ToString().Replace("-", "");
+                Settings.Default.Save();
+
                 ide = GetGlobalService(typeof(SDTE)) as DTE;
                 ide.Events.WindowEvents.WindowActivated += this.WindowActivated;
                 ide.Events.SolutionEvents.BeforeClosing += this.SolutionBeforeClosing;
@@ -52,7 +56,7 @@
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                     if (!this.Discord.Initialize())
-                        ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
+                        ActivityLog.LogError("DiscordRPforVS", $"{Translates.LogError(Settings.Default.translates)}");
 
                 if (Settings.loadOnStartup)
                     await this.UpdatePresenceAsync(ide.ActiveDocument).ConfigureAwait(true);
@@ -84,7 +88,7 @@
 
             if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                 if (!this.Discord.Initialize())
-                    ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
+                    ActivityLog.LogError("DiscordRPforVS", $"{Translates.LogError(Settings.Default.translates)}");
 
             if (windowActivated.Document != null)
                 await this.UpdatePresenceAsync(windowActivated.Document).ConfigureAwait(true);
@@ -106,7 +110,7 @@
                 {
                     if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                         if (!this.Discord.Initialize())
-                            ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
+                            ActivityLog.LogError("DiscordRPforVS", $"{Translates.LogError(Settings.Default.translates)}");
 
                     this.Discord.ClearPresence();
                     return;
@@ -116,8 +120,8 @@
 
                 if (Settings.secretMode)
                 {
-                    this.Presence.Details = "I'm working on something you're";
-                    this.Presence.State = "not allowed to know about, sorry.";
+                    this.Presence.Details = Translates.Presence_Details(Settings.Default.translates);
+                    this.Presence.State = Translates.Presence_State(Settings.Default.translates);
                     goto finish;
                 }
 
@@ -132,18 +136,18 @@
                 }
 
                 Boolean supported = language.Length > 0;
-                this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : this.versionImageKey;
-                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " file" : "Unrecognized extension" : this.versionString;
-                this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : "text";
-                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " file" : "Unrecognized extension";
+                this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : $"{Translates.Text(Settings.Default.translates)}" : this.versionImageKey;
+                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + $" {Translates.File(Settings.Default.translates)}" : Translates.UnrecognizedExtension(Settings.Default.translates) : this.versionString;
+                this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : $"{Translates.Text(Settings.Default.translates)}";
+                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + $" {Translates.File(Settings.Default.translates)}" : Translates.UnrecognizedExtension(Settings.Default.translates);
 
                 if (Settings.showFileName)
-                    this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : "No file.";
+                    this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : Translates.NoFile(Settings.Default.translates);
 
                 if (Settings.showSolutionName)
                 {
                     Boolean idling = ide.Solution is null || String.IsNullOrEmpty(ide.Solution.FullName);
-                    this.Presence.State = idling ? "Idling" : $"Developing {Path.GetFileNameWithoutExtension(ide.Solution.FileName)}";
+                    this.Presence.State = idling ? Translates.Idling(Settings.Default.translates) : $"{Translates.Developing(Settings.Default.translates)} {Path.GetFileNameWithoutExtension(ide.Solution.FileName)}";
 
                     if (idling)
                     {
@@ -176,7 +180,7 @@
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                     if (!this.Discord.Initialize())
-                        ActivityLog.LogError("DiscordRPforVS", "Could not start RP");
+                        ActivityLog.LogError("DiscordRPforVS", Translates.LogError(Settings.Default.translates));
 
                 this.Discord.SetPresence(this.Presence);
             }

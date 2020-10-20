@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using Properties;
 
     public static class Constants
     {
@@ -16,7 +17,7 @@
             { new String[] { ".FS", ".FSI", ".FSX", ".FSSCRIPT" }, new String[] { "fsharp", "F#" } },
             { new String[] { ".TS" }, new String[] { "typescript", "Typescript" } },
             { new String[] { ".CLASS", ".JAVA" }, new String[] { "java", "Java" } },
-            { new String[] { ".TXT" }, new String[] { "text", "Text document" } },
+            { new String[] { ".TXT" }, new String[] { "text", Translates.TextDocument(Settings.Default.translates)  } },
             { new String[] { ".JSON" }, new String[] { "json", "JSON" } },
             { new String[] { ".PY", ".PYW", ".PYI", ".PYX" }, new String[] { "python", "Python" } },
             { new String[] { ".CSS" }, new String[] { "css", "CSS" } },

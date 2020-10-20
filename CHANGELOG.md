@@ -1,5 +1,14 @@
 ﻿# Changelog
 
+## [v5.4] (20-10-2020)
+###### Added translation system + Russian language!
+
+>_Русские теперь с вами!_
+
+**CHANGES**
+- Added translation system.
+- Added Russian language.
+
 ## [v5.3] (25-6-2019)
 ###### The optimization update.
 
