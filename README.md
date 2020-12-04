@@ -1,5 +1,5 @@
 # DiscordRPCVS
-# DEPRECATED: I no longer wish to use Microsoft products, someone else may take this repository and maintain the extension as their own.
+# DEPRECATED: I no longer wish to use Microsoft products, someone else may fork this repository and maintain the extension as their own.
 This extension enables [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 2017 and 2019.
 
 As you're developing, this extension will automatically update your status on Discord to tell the world what you're coding.
