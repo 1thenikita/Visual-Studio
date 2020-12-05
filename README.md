@@ -7,8 +7,8 @@ You can install the latest release [here](https://marketplace.visualstudio.com/i
 
 Here's a demonstration of how it looks in Discord
 <p align="center"> 
-  <img src="https://sorry-there-is.nothing-to-see-he.re/3mUaAn.png" />
-  <img src="https://sorry-there-is.nothing-to-see-he.re/Ay7EUL.png" />
+  <img src="https://nothing-to-see-he.re/3mUaAn.png" />
+  <img src="https://nothing-to-see-he.re/Ay7EUL.png" />
 </p>
 
 # Features
@@ -29,8 +29,8 @@ A neat feature with this extension compared to others is you can completely cust
 
 Here's a demonstration of the settings
 <p align="center"> 
-  <img src="https://sorry-there-is.nothing-to-see-he.re/65mSaD.png" />
-  <img src="https://sorry-there-is.nothing-to-see-he.re/4wfoqY.png" />
+  <img src="https://nothing-to-see-he.re/65mSaD.png" />
+  <img src="https://nothing-to-see-he.re/4wfoqY.png" />
 </p>
 
 # Contributing
@@ -45,8 +45,8 @@ As I'm sure more languages and file types are wanted to be supported you can fee
 
 Вот демонстрация того, как это выглядит в Discord
 <p align="center"> 
-  <img src="https://sorry-there-is.nothing-to-see-he.re/3mUaAn.png" />
-  <img src="https://sorry-there-is.nothing-to-see-he.re/Ay7EUL.png" />
+  <img src="https://nothing-to-see-he.re/3mUaAn.png" />
+  <img src="https://nothing-to-see-he.re/Ay7EUL.png" />
 </p>
 
 # Возможности
@@ -67,8 +67,8 @@ As I'm sure more languages and file types are wanted to be supported you can fee
 
 Вот демонстрация настроек
 <p align="center"> 
-  <img src="https://sorry-there-is.nothing-to-see-he.re/65mSaD.png" />
-  <img src="https://sorry-there-is.nothing-to-see-he.re/4wfoqY.png" />
+  <img src="https://nothing-to-see-he.re/65mSaD.png" />
+  <img src="https://nothing-to-see-he.re/4wfoqY.png" />
 </p>
 
 # Дополнение к плагину
