@@ -1,6 +1,5 @@
-# DiscordRPCVS
-# DEPRECATED: I no longer wish to use Microsoft products, someone else may fork this repository and maintain the extension as their own.
-This extension enables [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 2017 and 2019.
+# DiscordRPCVS for Visual Studio
+This extension enables on [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 2017 and 2019.
 
 As you're developing, this extension will automatically update your status on Discord to tell the world what you're coding.
 
@@ -23,7 +22,7 @@ Here's a demonstration of how it looks in Discord
 * The ability to turn Rich Presence completely on or off.
 * The ability to toggle it starting up at startup.
 * The ability to use secret mode.
-* NEW! Translation into Russian language
+* Ability to use different languages. Available languages: English and Russian
 
 # Toggling Display
 A neat feature with this extension compared to others is you can completely customize your Rich Presence and display only what you want.
@@ -37,10 +36,10 @@ Here's a demonstration of the settings
 # Contributing
 As I'm sure more languages and file types are wanted to be supported you can feel free to request a feature.
 
-# DiscordRPCVS
-Это расширение работает [Discord Rich Presence](https://discordapp.com/rich-presence) для Visual Studio 2017 и 2019 годов.
+# DiscordRPC для Visual Studio
+Это расширение работает на [Discord Rich Presence](https://discordapp.com/rich-presence) для Visual Studio 2017 и 2019 годов.
 
-По мере разработки это расширение будет автоматически обновлять ваш статус в Discord, чтобы сообщить миру, что вы кодите
+По мере разработки это расширение будет автоматически обновлять ваш статус в Discord, чтобы сообщить миру, что вы кодите.
 
 Вы можете установить последнюю версию [здесь](https://marketplace.visualstudio.com/items?itemName=VisualDevelopment.drpcvs2019)
 
@@ -50,20 +49,20 @@ As I'm sure more languages and file types are wanted to be supported you can fee
   <img src="https://sorry-there-is.nothing-to-see-he.re/Ay7EUL.png" />
 </p>
 
-# Features
+# Возможности
 * Отображает файл, который вы редактируете в Visual Studio.
 * Отображает, с каким проектом вы работаете.
 * Поддержка популярных языков, таких как F#, C#, C++, Javascript, Python, Go, PHP и других.
-* Показывает, как долго вы редактировали определенный файл.
+* Показывает, как долго вы редактировали определённый файл.
 * Возможность переключать отображение имен файлов, решений и временных меток в вашем богатом присутствии Discord.
 * Возможность переключать, сбрасывается ли ваше время работы в Discord при переключении файлов.
 * Возможность переключения между использованием больших или маленьких изображений для вашего типа файла.
 * Возможность полностью включить или выключить плагин.
 * Возможность переключения его запуска при запуске.
 * Возможность использования секретного режима.
-* NEW! Перевод на русский язык
+* Возможность использования разных языков. Доступные языки: Английский и Русский
 
-# Toggling Display
+# Переключение настроек
 Аккуратная особенность этого расширения по сравнению с другими заключается в том, что вы можете полностью настроить свой плагин и отображать только то, что хотите.
 
 Вот демонстрация настроек
@@ -72,5 +71,5 @@ As I'm sure more languages and file types are wanted to be supported you can fee
   <img src="https://sorry-there-is.nothing-to-see-he.re/4wfoqY.png" />
 </p>
 
-# Contributing
+# Дополнение к плагину
 Поскольку я уверен, что требуется поддержка большего количества языков и типов файлов, вы можете смело запросить эту функцию или написать её самому.
