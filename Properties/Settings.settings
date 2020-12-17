@@ -14,9 +14,6 @@
     <Setting Name="showTimestamp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="resetTimestamp" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="largeLanguage" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -28,6 +25,9 @@
     </Setting>
     <Setting Name="translates" Type="System.String" Scope="User">
       <Value Profile="(Default)">enUS</Value>
+    </Setting>
+    <Setting Name="resetTimestamp" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
