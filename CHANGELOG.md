@@ -1,6 +1,6 @@
 ﻿# Changelog
 
-## [v5.45 (28-2-2020)
+## [v5.5] (28-2-2020)
 ###### New design and improved translat
 
 >_Welcome to the year 2021!_
