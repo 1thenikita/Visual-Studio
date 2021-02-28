@@ -41,7 +41,7 @@
                 Settings.Upgrade();
 
                 // Writes the language used to the global variable
-                Settings.Default.translates = System.Globalization.CultureInfo.CurrentCulture.ToString().Replace("-", "");
+                Settings.Default.translates = CultureInfo.CurrentCulture.ToString();
                 Settings.Default.Save();
 
                 ide = GetGlobalService(typeof(SDTE)) as DTE;
@@ -120,8 +120,11 @@
 
                 if (Settings.secretMode)
                 {
-                    this.Presence.Details = Translates.Presence_Details(Settings.Default.translates);
-                    this.Presence.State = Translates.Presence_State(Settings.Default.translates);
+                    this.Presence.Details = Translates.PresenceDetails(Settings.Default.translates);
+                    this.Presence.State = Translates.PresenceState(Settings.Default.translates);
+                    this.Assets.LargeImageKey = this.versionImageKey;
+                    this.Assets.LargeImageText = this.versionString;
+                    this.Assets.SmallImageKey = this.Assets.SmallImageText = "";
                     goto finish;
                 }
 
@@ -136,10 +139,10 @@
                 }
 
                 Boolean supported = language.Length > 0;
-                this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : $"{Translates.Text(Settings.Default.translates)}" : this.versionImageKey;
-                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + $" {Translates.File(Settings.Default.translates)}" : Translates.UnrecognizedExtension(Settings.Default.translates) : this.versionString;
-                this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : $"{Translates.Text(Settings.Default.translates)}";
-                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + $" {Translates.File(Settings.Default.translates)}" : Translates.UnrecognizedExtension(Settings.Default.translates);
+                this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : this.versionImageKey;
+                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " " + Translates.File(Settings.Default.translates) : Translates.UnrecognizedExtension(Settings.Default.translates) : this.versionString;
+                this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : "text";
+                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " " + Translates.File(Settings.Default.translates) : Translates.UnrecognizedExtension(Settings.Default.translates);
 
                 if (Settings.showFileName)
                     this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : Translates.NoFile(Settings.Default.translates);

@@ -17,14 +17,26 @@ namespace DiscordRPforVS
         public static class SettingsWindow
         {
             /// <summary>
+            /// Translation handler for the Title variable
+            /// </summary>
+            /// <param name="translate">Language</param>
+            /// <returns>Title in the desired language</returns>
+            public static string Title(string translate)
+            {
+                if (translate == "en-US") { return "Discord Rich Presence Settings"; }
+                else if (translate == "ru-RU") { return "Discord Rich Presence настройки"; }
+                else { return "Discord Rich Presence Settings"; }
+            }
+
+            /// <summary>
             /// Translation handler for the IsPresenceEnabled variable
             /// </summary>
             /// <param name="translate">Language</param>
             /// <returns>IsPresenceEnabled in the desired language</returns>
             public static string IsPresenceEnabled(string translate)
             {
-                if (translate == "enUS") { return "Enable Discord Rich Presence"; }
-                else if (translate == "ruRU") { return "Включить"; }
+                if (translate == "en-US") { return "Enable Discord Rich Presence"; }
+                else if (translate == "ru-RU") { return "Включить"; }
                 else { return "Enable Discord Rich Presence"; }
             }
 
@@ -35,8 +47,8 @@ namespace DiscordRPforVS
             /// <returns>IsFileNameShown in the desired language</returns>
             public static string IsFileNameShown(string translate)
             {
-                if (translate == "enUS") { return "Show file name"; }
-                else if (translate == "ruRU") { return "Показывать имя файла"; }
+                if (translate == "en-US") { return "Show file name"; }
+                else if (translate == "ru-RU") { return "Показывать имя файла"; }
                 else { return "Show file name"; }
             }
 
@@ -47,8 +59,8 @@ namespace DiscordRPforVS
             /// <returns>IsSolutionNameShown in the desired language</returns>
             public static string IsSolutionNameShown(string translate)
             {
-                if (translate == "enUS") { return "Show solution name"; }
-                else if (translate == "ruRU") { return "Показывать расширение файла"; }
+                if (translate == "en-US") { return "Show solution name"; }
+                else if (translate == "ru-RU") { return "Показывать имя проекта"; }
                 else { return "Show solution name"; }
             }
 
@@ -59,8 +71,8 @@ namespace DiscordRPforVS
             /// <returns>IsTimestampShown in the desired language</returns>
             public static string IsTimestampShown(string translate)
             {
-                if (translate == "enUS") { return "Show timestamp"; }
-                else if (translate == "ruRU") { return "Показывать время работы"; }
+                if (translate == "en-US") { return "Show timestamp"; }
+                else if (translate == "ru-RU") { return "Показывать время работы"; }
                 else { return "Show timestamp"; }
             }
 
@@ -71,8 +83,8 @@ namespace DiscordRPforVS
             /// <returns>IsTimestampResetEnabled in the desired language</returns>
             public static string IsTimestampResetEnabled(string translate)
             {
-                if (translate == "enUS") { return "Reset timestamp on file change"; }
-                else if (translate == "ruRU") { return "Обнулить время работы и название файла"; }
+                if (translate == "en-US") { return "Reset timestamp on file change"; }
+                else if (translate == "ru-RU") { return "Перезапускать таймер при изменении файла"; }
                 else { return "Reset timestamp on file change"; }
             }
 
@@ -83,8 +95,8 @@ namespace DiscordRPforVS
             /// <returns>IsLanguageImageLarge in the desired language</returns>
             public static string IsLanguageImageLarge(string translate)
             {
-                if (translate == "enUS") { return "Large language image"; }
-                else if (translate == "ruRU") { return "Уменьшенная картинка языка программирования"; }
+                if (translate == "en-US") { return "Large language image"; }
+                else if (translate == "ru-RU") { return "Большая картинка языка программирования"; }
                 else { return "Large language image"; }
             }
 
@@ -95,8 +107,8 @@ namespace DiscordRPforVS
             /// <returns>SecretMode in the desired language</returns>
             public static string SecretMode(string translate)
             {
-                if (translate == "enUS") { return "Secret mode"; }
-                else if (translate == "ruRU") { return "Секретный режим"; }
+                if (translate == "en-US") { return "Secret mode"; }
+                else if (translate == "ru-RU") { return "Секретный режим"; }
                 else { return "Secret mode"; }
             }
 
@@ -107,21 +119,9 @@ namespace DiscordRPforVS
             /// <returns>LoadOnStartup in the desired language</returns>
             public static string LoadOnStartup(string translate)
             {
-                if (translate == "enUS") { return "Load on startup"; }
-                else if (translate == "ruRU") { return "Автоматический запуск"; }
+                if (translate == "en-US") { return "Load on startup"; }
+                else if (translate == "ru-RU") { return "Автоматический запуск"; }
                 else { return "Load on startup"; }
-            }
-
-            /// <summary>
-            /// Translation handler for the SaveButton variable
-            /// </summary>
-            /// <param name="translate">Language</param>
-            /// <returns>SaveButton in the desired language</returns>
-            public static string SaveButton(string translate)
-            {
-                if (translate == "enUS") { return "Save and Close"; }
-                else if (translate == "ruRU") { return "Сохранить и закрыть"; }
-                else { return "Save and Close"; }
             }
         }
 
@@ -132,8 +132,8 @@ namespace DiscordRPforVS
         /// <returns>Settings in the desired language</returns>
         public static string Settings(string translate)
         {
-            if (translate == "enUS") { return "Settings"; }
-            else if (translate == "ruRU") { return "Настройки"; }
+            if (translate == "en-US") { return "Settings"; }
+            else if (translate == "ru-RU") { return "Настройки"; }
             else { return "Settings"; }
         }
 
@@ -144,9 +144,33 @@ namespace DiscordRPforVS
         /// <returns>TextDocument in the desired language</returns>
         public static string TextDocument(string translate)
         {
-            if(translate == "enUS") { return "Text document"; }
-            else if(translate == "ruRU") { return "Текстовый документ"; }
-            else { return "Text document"; }
+            if(translate == "en-US") { return "Text"; }
+            else if(translate == "ru-RU") { return "Текстовый"; }
+            else { return "Text"; }
+        }
+
+        /// <summary>
+        /// Translation handler for the LogDocument variable
+        /// </summary>
+        /// <param name="translate">Language</param>
+        /// <returns>LogDocument in the desired language</returns>
+        public static string LogDocument(string translate)
+        {
+            if (translate == "en-US") { return "Log"; }
+            else if (translate == "ru-RU") { return "Log"; }
+            else { return "Log"; }
+        }
+
+        /// <summary>
+        /// Translation handler for the VSCTDocument variable
+        /// </summary>
+        /// <param name="translate">Language</param>
+        /// <returns>VSCTDocument in the desired language</returns>
+        public static string VSCTDocument(string translate)
+        {
+            if (translate == "en-US") { return "VS Command Table Configuration"; }
+            else if (translate == "ru-RU") { return "VS Настройка командной таблицы"; }
+            else { return "Log"; }
         }
 
         /// <summary>
@@ -156,8 +180,8 @@ namespace DiscordRPforVS
         /// <returns>Text in the desired language</returns>
         public static string Text(string translate)
         {
-            if (translate == "enUS") { return "text"; }
-            else if (translate == "ruRU") { return "текст"; }
+            if (translate == "en-US") { return "text"; }
+            else if (translate == "ru-RU") { return "текст"; }
             else { return "text"; }
         }
 
@@ -168,8 +192,8 @@ namespace DiscordRPforVS
         /// <returns>File in the desired language</returns>
         public static string File(string translate)
         {
-            if (translate == "enUS") { return "file"; }
-            else if (translate == "ruRU") { return "файл"; }
+            if (translate == "en-US") { return "file"; }
+            else if (translate == "ru-RU") { return "файл"; }
             else { return "file"; }
         }
 
@@ -180,8 +204,8 @@ namespace DiscordRPforVS
         /// <returns>LogError in the desired language</returns>
         public static string LogError(string translate)
         {
-            if (translate == "enUS") { return "Could not start RP"; }
-            else if (translate == "ruRU") { return "Не удалось запустить RP"; }
+            if (translate == "en-US") { return "Could not start RP"; }
+            else if (translate == "ru-RU") { return "Не удалось запустить RP"; }
             else { return "Could not start RP"; }
         }
 
@@ -190,10 +214,10 @@ namespace DiscordRPforVS
         /// </summary>
         /// <param name="translate">Language</param>
         /// <returns>Presence_Details in the desired language</returns>
-        public static string Presence_Details(string translate)
+        public static string PresenceDetails(string translate)
         {
-            if (translate == "enUS") { return "I'm working on something you're"; }
-            else if (translate == "ruRU") { return "Я работаю над тем, о чем"; }
+            if (translate == "en-US") { return "I'm working on something you're"; }
+            else if (translate == "ru-RU") { return "Я работаю над тем, о чем"; }
             else { return "I'm working on something you're"; }
         }
 
@@ -202,10 +226,10 @@ namespace DiscordRPforVS
         /// </summary>
         /// <param name="translate">Language</param>
         /// <returns>Presence_State in the desired language</returns>
-        public static string Presence_State(string translate)
+        public static string PresenceState(string translate)
         {
-            if (translate == "enUS") { return "not allowed to know about, sorry."; }
-            else if (translate == "ruRU") { return "тебе не положено знать, извини."; }
+            if (translate == "en-US") { return "not allowed to know about, sorry."; }
+            else if (translate == "ru-RU") { return "тебе не положено знать, извини."; }
             else { return "not allowed to know about, sorry."; }
         }
 
@@ -216,8 +240,8 @@ namespace DiscordRPforVS
         /// <returns>SuppressMessage in the desired language</returns>
         public static string SuppressMessage(string translate)
         {
-            if (translate == "enUS") { return "Async void return type required"; }
-            if (translate == "ruRU") { return "Требуется тип возвращаемого значения Async void"; }
+            if (translate == "en-US") { return "Async void return type required"; }
+            if (translate == "ru-RU") { return "Требуется тип возвращаемого значения Async void"; }
             else { return "Async void return type required"; }
         }
 
@@ -228,8 +252,8 @@ namespace DiscordRPforVS
         /// <returns>UnrecognizedExtension in the desired language</returns>
         public static string UnrecognizedExtension(string translate)
         {
-            if (translate == "enUS") { return "Unrecognized extension"; }
-            if (translate == "ruRU") { return "Незарегистрированное расширение"; }
+            if (translate == "en-US") { return "Unrecognized extension"; }
+            if (translate == "ru-RU") { return "Незарегистрированное расширение"; }
             else { return "Unrecognized extension"; }
         }
 
@@ -240,8 +264,8 @@ namespace DiscordRPforVS
         /// <returns>NoFile in the desired language</returns>
         public static string NoFile(string translate)
         {
-            if (translate == "enUS") { return "No File."; }
-            if (translate == "ruRU") { return "Файл не выбран."; }
+            if (translate == "en-US") { return "No File."; }
+            if (translate == "ru-RU") { return "Файл не выбран."; }
             else { return "No File."; }
         }
 
@@ -252,8 +276,8 @@ namespace DiscordRPforVS
         /// <returns>Idling in the desired language</returns>
         public static string Idling(string translate)
         {
-            if (translate == "enUS") { return "Idling"; }
-            if (translate == "ruRU") { return "Выбирает проект"; }
+            if (translate == "en-US") { return "Idling"; }
+            if (translate == "ru-RU") { return "Выбирает проект"; }
             else { return "Idling"; }
         }
 
@@ -264,8 +288,8 @@ namespace DiscordRPforVS
         /// <returns>Developing in the desired language</returns>
         public static string Developing(string translate)
         {
-            if (translate == "enUS") { return "Developing"; }
-            if (translate == "ruRU") { return "Работает в проекте"; }
+            if (translate == "en-US") { return "Developing"; }
+            if (translate == "ru-RU") { return "Работает в проекте"; }
             else { return "Idling"; }
         }
 
@@ -276,8 +300,8 @@ namespace DiscordRPforVS
         /// <returns>AvoidSync in the desired language</returns>
         public static string AvoidSync(string translate)
         {
-            if (translate == "enUS") { return "Async void return type required"; }
-            if (translate == "ruRU") { return "Требуется тип возвращаемого значения Async void"; }
+            if (translate == "en-US") { return "Async void return type required"; }
+            if (translate == "ru-RU") { return "Требуется тип возвращаемого значения Async void"; }
             else { return "Async void return type required"; }
         }
     }

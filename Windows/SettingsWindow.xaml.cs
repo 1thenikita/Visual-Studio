@@ -16,6 +16,7 @@
 
         private void DiscordRPforVSSettingsWindow_Loaded(Object sender, RoutedEventArgs e)
         {
+            this.Title = Translates.SettingsWindow.Title(Settings.Default.translates);
             this.IsPresenceEnabled.Content = Translates.SettingsWindow.IsPresenceEnabled(Settings.Default.translates);
             this.IsFileNameShown.Content = Translates.SettingsWindow.IsFileNameShown(Settings.Default.translates);
             this.IsSolutionNameShown.Content = Translates.SettingsWindow.IsSolutionNameShown(Settings.Default.translates);
@@ -24,7 +25,6 @@
             this.IsLanguageImageLarge.Content = Translates.SettingsWindow.IsLanguageImageLarge(Settings.Default.translates);
             this.SecretMode.Content = Translates.SettingsWindow.SecretMode(Settings.Default.translates);
             this.LoadOnStartup.Content = Translates.SettingsWindow.LoadOnStartup(Settings.Default.translates);
-            this.SaveButton.Content = Translates.SettingsWindow.SaveButton(Settings.Default.translates);
 
             this.IsPresenceEnabled.IsChecked = DiscordRPforVSPackage.Settings.enabled;
             this.IsFileNameShown.IsChecked = DiscordRPforVSPackage.Settings.showFileName;
@@ -45,7 +45,7 @@
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Async void return type required")]
-        private async void SaveButton_Click(Object sender, RoutedEventArgs e)
+        private async void SaveSettings(Object sender, RoutedEventArgs e)
         {
             DiscordRPforVSPackage.Settings.enabled = (Boolean)this.IsPresenceEnabled.IsChecked;
             DiscordRPforVSPackage.Settings.showFileName = (Boolean)this.IsFileNameShown.IsChecked;
@@ -65,7 +65,6 @@
                 ActivityLog.LogError(exc.Source, exc.Message);
             }
             await ((DiscordRPforVSPackage)SettingsCommand.Instance.package).UpdatePresenceAsync(DiscordRPforVSPackage.ide.ActiveDocument, true).ConfigureAwait(true);
-            this.Close();
         }
     }
 }

@@ -8,14 +8,12 @@
     x:Name="DiscordRPforVSSettingsWindow"
     Title="Discord Rich Presence Settings"
     Width="500"
-    Height="500"
-    d:DesignHeight="500"
+    Height="458.901"
     d:DesignWidth="500"
     Background="#FF2D2D30"
     Foreground="White"
     Loaded="DiscordRPforVSSettingsWindow_Loaded"
-    WindowStyle="SingleBorderWindow"
-    mc:Ignorable="d">
+    mc:Ignorable="d" WindowStyle="ToolWindow">
     <Window.Resources>
         <local:BitmapToImageSourceConverter x:Key="BitmapToImageSourceConverter" />
         <Style x:Key="Default" TargetType="Button">
@@ -71,7 +69,9 @@
                         <Border
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="1">
+                            CornerRadius="15"
+                            Margin="5,0"
+                            BorderThickness="2">
                             <Grid Background="{TemplateBinding Background}">
                                 <Label
                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -93,10 +93,10 @@
                                 <Setter Property="BorderBrush" Value="#FF3399FF" />
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="#FF3399FF" />
+                                <Setter Property="BorderBrush" Value="#9168D9" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#FF3399FF" />
+                                <Setter Property="BorderBrush" Value="#FF3399FF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -128,21 +128,23 @@
         <Border Grid.Row="1">
             <ToggleButton
                 x:Name="IsPresenceEnabled"
-                Height="27"
                 VerticalAlignment="Top"
                 Content="Enable Discord Rich Presence"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="2">
             <ToggleButton
                 x:Name="IsFileNameShown"
                 Content="Show file name"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="3">
             <ToggleButton
                 x:Name="IsSolutionNameShown"
                 Content="Show solution name"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="4">
@@ -150,6 +152,7 @@
                 x:Name="IsTimestampShown"
                 Checked="IsTimestampShown_ValueChanged"
                 Content="Show timestamp"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}"
                 Unchecked="IsTimestampShown_ValueChanged" />
         </Border>
@@ -157,33 +160,29 @@
             <ToggleButton
                 x:Name="IsTimestampResetEnabled"
                 Content="Reset timestamp on file change"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="6">
             <ToggleButton
                 x:Name="IsLanguageImageLarge"
                 Content="Large language image"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="7">
             <ToggleButton
                 x:Name="SecretMode"
                 Content="Secret mode"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="8">
             <ToggleButton
                 x:Name="LoadOnStartup"
                 Content="Load on startup"
+                Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
-        </Border>
-        <Border Grid.Row="9" Padding="0,37,0,0">
-            <Button
-                x:Name="SaveButton"
-                Height="30"
-                Click="SaveButton_Click"
-                Content="Save and Close"
-                Style="{StaticResource ResourceKey=Default}" />
         </Border>
     </Grid>
 </local:BaseDialogWindow>

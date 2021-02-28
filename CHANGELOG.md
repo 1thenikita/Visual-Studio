@@ -1,5 +1,32 @@
 ﻿# Changelog
 
+## [v5.45 (28-2-2020)
+###### New design and improved translat
+
+>_Welcome to the year 2021!_
+
+**CHANGES**
+- The new design is just a cannon!
+- Added VB files.
+
+**SQUASHED BUGS**
+- Fixed an error identifying a file with the .C extension
+
+<details>
+<summary>Design</summary>
+<p>
+before
+<p> 
+  <img src="https://nothing-to-see-he.re/4wfoqY.png" />
+</p>
+
+after
+<p> 
+  <img src="https://i.imgur.com/ZGnPIBj.png" />
+</p>
+</p>
+</details>
+
 ## [v5.4] (20-10-2020)
 ###### Added translation system + Russian language!
 
