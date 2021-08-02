@@ -290,7 +290,7 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Developing"; }
             if (translate == "ru-RU") { return "Работает в проекте"; }
-            else { return "Idling"; }
+            else { return "Developing"; }
         }
 
         /// <summary>
