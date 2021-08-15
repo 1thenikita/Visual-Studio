@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="VisualDevelopment.drpcvs" Version="5.6" Language="en-US" Publisher="1TheNikita" />
         <DisplayName>Discord Rich Presence</DisplayName>
-        <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017, 2019, and 2022.</Description>
+        <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017, 2019 and 2022.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=1TheNikita.drpcvs2019</MoreInfo>
         <License>Resources\LICENSE.txt</License>
         <ReleaseNotes>https://github.com/1TheNikita/Visual-Studio/blob/master/CHANGELOG.md</ReleaseNotes>
