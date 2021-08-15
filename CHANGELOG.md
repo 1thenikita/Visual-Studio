@@ -1,6 +1,15 @@
 ﻿# Changelog
 
-## [v5.5] (28-2-2020)
+## [v5.5.1] (15-08-2021)
+###### Fixed bugs + added Hungarian language!
+
+>_A magyarok már veled vannak!_
+
+**CHANGES**
+- Fixed infinite idling bug when using another language.
+- Added Hungarian language.
+
+## [v5.5] (28-2-2021)
 ###### New design and improved translate
 
 >_Welcome to the year 2021!_
