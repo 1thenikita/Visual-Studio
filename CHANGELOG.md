@@ -1,5 +1,13 @@
 ﻿# Changelog
 
+## [v5.5.2] (11-09-2021)
+###### Added Polish language!
+
+>_Polacy są teraz z nami!_
+
+**CHANGES**
+- Added Polish language.
+
 ## [v5.5.1] (15-08-2021)
 ###### Fixed bugs + added Hungarian language!
 
