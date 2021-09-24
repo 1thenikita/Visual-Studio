@@ -41,7 +41,7 @@
                 Settings.Upgrade();
 
                 // Writes the language used to the global variable
-                Settings.Default.translates = CultureInfo.CurrentCulture.ToString();
+                Settings.translates = Settings.Default.useEnglishLanguage ? "en-US" : CultureInfo.CurrentCulture.ToString();
                 Settings.Default.Save();
 
                 ide = GetGlobalService(typeof(SDTE)) as DTE;
@@ -178,7 +178,7 @@
                     this.CurrentTimestamps = this.Presence.Timestamps;
                 }
 
-            finish:;
+                finish:;
                 this.Presence.Assets = this.Assets;
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)

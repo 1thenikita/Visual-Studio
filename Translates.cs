@@ -141,6 +141,20 @@ namespace DiscordRPforVS
                 else if (translate == "pl-PL") { return "Automatyczny start"; }
                 else { return "Load on startup"; }
             }
+
+            /// <summary>
+            /// Translation handler for the UseEnglish variable
+            /// </summary>
+            /// <param name="translate">Language</param>
+            /// <returns>UseEnglish in the desired language</returns>
+            public static string UseEnglish(string translate)
+            {
+                if (translate == "en-US") { return "Use English language"; }
+                else if (translate == "ru-RU") { return "Использовать Английский язык"; }
+                else if (translate == "hu-HU") { return "Angol nyelv használata"; }
+                else if (translate == "pl-PL") { return "Używanie języka angielskiego"; }
+                else { return "Use English language"; }
+            }
         }
 
         /// <summary>

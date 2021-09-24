@@ -8,7 +8,7 @@
     x:Name="DiscordRPforVSSettingsWindow"
     Title="Discord Rich Presence Settings"
     Width="500"
-    Height="458.901"
+    Height="500.689"
     d:DesignWidth="500"
     Background="#FF2D2D30"
     Foreground="White"
@@ -121,6 +121,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0">
             <Image Width="256" Source="{Binding Source={x:Static local:VSPackage.Logo}, Converter={StaticResource BitmapToImageSourceConverter}}" />
@@ -181,6 +182,13 @@
             <ToggleButton
                 x:Name="LoadOnStartup"
                 Content="Load on startup"
+                Click="SaveSettings"
+                Style="{StaticResource ResourceKey=DefaultToggle}" />
+        </Border>
+        <Border Grid.Row="9">
+            <ToggleButton
+                x:Name="UseEnglishLanguage"
+                Content="Use English language"
                 Click="SaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
