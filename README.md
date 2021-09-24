@@ -47,8 +47,8 @@ A neat feature with this extension compared to others is you can completely cust
 
 Here's a demonstration of the settings
 <p align="center"> 
-  <img src="https://nothing-to-see-he.re/65mSaD.png" />
-  <img src="https://i.imgur.com/ZGnPIBj.png" />
+  <img src="https://i.imgur.com/EQIn4Nf.png" />
+  <img src="https://i.imgur.com/zhla0yV.png" />
 </p>
 
 # Contributing
