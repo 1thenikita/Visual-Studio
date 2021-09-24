@@ -1,5 +1,29 @@
 ﻿# Changelog
 
+## [v5.5.3] (24-09-2021)
+###### Fixed bugs and added a switch to English!
+
+**CHANGES**
+- Added a switch to English.
+- Changed the dislocation of settings: they are now in the "Extensions" section.
+
+**SQUASHED BUGS**
+- Fixed a bug that made it impossible to open the settings menu.
+
+<details>
+<summary>Dislocation of settings</summary>
+<p>
+before
+<p> 
+  <img src="https://nothing-to-see-he.re/65mSaD.png" />
+</p>
+
+after
+<p> 
+  <img src="https://i.imgur.com/EQIn4Nf.png" />
+</p>
+</details>
+
 ## [v5.5.2] (11-09-2021)
 ###### Added Polish language!
 
@@ -40,7 +64,6 @@ before
 after
 <p> 
   <img src="https://i.imgur.com/ZGnPIBj.png" />
-</p>
 </p>
 </details>
 
