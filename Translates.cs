@@ -25,6 +25,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Discord Rich Presence Settings"; }
                 else if (translate == "ru-RU") { return "Discord Rich Presence настройки"; }
+                else if (translate == "hu-HU") { return "Discord Rich Presence beállítások"; }
+                else if (translate == "pl-PL") { return "Ustawienia Discord Rich Presence"; }
                 else { return "Discord Rich Presence Settings"; }
             }
 
@@ -37,6 +39,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Enable Discord Rich Presence"; }
                 else if (translate == "ru-RU") { return "Включить"; }
+                else if (translate == "hu-HU") { return "Discord Rich Presence engedélyezése"; }
+                else if (translate == "pl-PL") { return "Włącz Discord Rich Presence"; }
                 else { return "Enable Discord Rich Presence"; }
             }
 
@@ -49,6 +53,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Show file name"; }
                 else if (translate == "ru-RU") { return "Показывать имя файла"; }
+                else if (translate == "hu-HU") { return "Fájlnév megjelenítése"; }
+                else if (translate == "pl-PL") { return "Pokazuj nazwę pliku"; }
                 else { return "Show file name"; }
             }
 
@@ -61,6 +67,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Show solution name"; }
                 else if (translate == "ru-RU") { return "Показывать имя проекта"; }
+                else if (translate == "hu-HU") { return "Projekt nevének megjelenítése"; }
+                else if (translate == "pl-PL") { return "Pokazuj nazwę rozwiązania"; }
                 else { return "Show solution name"; }
             }
 
@@ -73,6 +81,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Show timestamp"; }
                 else if (translate == "ru-RU") { return "Показывать время работы"; }
+                else if (translate == "hu-HU") { return "Időbélyeg megjelenítése"; }
+                else if (translate == "pl-PL") { return "Pokazuj czas pracy"; }
                 else { return "Show timestamp"; }
             }
 
@@ -85,6 +95,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Reset timestamp on file change"; }
                 else if (translate == "ru-RU") { return "Перезапускать таймер при изменении файла"; }
+                else if (translate == "hu-HU") { return "Időbélyeg visszaállítása fájl módosításkor"; }
+                else if (translate == "pl-PL") { return "Resetuj czas pracy co zmianę pliku"; }
                 else { return "Reset timestamp on file change"; }
             }
 
@@ -97,6 +109,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Large language image"; }
                 else if (translate == "ru-RU") { return "Большая картинка языка программирования"; }
+                else if (translate == "hu-HU") { return "Nagy nyelv kép"; }
+                else if (translate == "pl-PL") { return "Duży obraz języka programowania"; }
                 else { return "Large language image"; }
             }
 
@@ -109,6 +123,8 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Secret mode"; }
                 else if (translate == "ru-RU") { return "Секретный режим"; }
+                else if (translate == "hu-HU") { return "Titkos mód"; }
+                else if (translate == "pl-PL") { return "Tryb tajny"; }
                 else { return "Secret mode"; }
             }
 
@@ -121,7 +137,23 @@ namespace DiscordRPforVS
             {
                 if (translate == "en-US") { return "Load on startup"; }
                 else if (translate == "ru-RU") { return "Автоматический запуск"; }
+                else if (translate == "hu-HU") { return "Automatikus indítás"; }
+                else if (translate == "pl-PL") { return "Automatyczny start"; }
                 else { return "Load on startup"; }
+            }
+
+            /// <summary>
+            /// Translation handler for the UseEnglish variable
+            /// </summary>
+            /// <param name="translate">Language</param>
+            /// <returns>UseEnglish in the desired language</returns>
+            public static string UseEnglish(string translate)
+            {
+                if (translate == "en-US") { return "Use English language"; }
+                else if (translate == "ru-RU") { return "Использовать Английский язык"; }
+                else if (translate == "hu-HU") { return "Angol nyelv használata"; }
+                else if (translate == "pl-PL") { return "Używanie języka angielskiego"; }
+                else { return "Use English language"; }
             }
         }
 
@@ -134,6 +166,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Settings"; }
             else if (translate == "ru-RU") { return "Настройки"; }
+            else if (translate == "hu-HU") { return "Beállítások"; }
+            else if (translate == "pl-PL") { return "Ustawienia"; }
             else { return "Settings"; }
         }
 
@@ -146,6 +180,8 @@ namespace DiscordRPforVS
         {
             if(translate == "en-US") { return "Text"; }
             else if(translate == "ru-RU") { return "Текстовый"; }
+            else if(translate == "hu-HU") { return "Szövegfájl"; }
+            else if (translate == "pl-PL") { return "Tekstowy"; }
             else { return "Text"; }
         }
 
@@ -158,6 +194,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Log"; }
             else if (translate == "ru-RU") { return "Log"; }
+            else if (translate == "hu-HU") { return "Log fájl"; }
+            else if (translate == "pl-PL") { return "Dziennik"; }
             else { return "Log"; }
         }
 
@@ -170,6 +208,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "VS Command Table Configuration"; }
             else if (translate == "ru-RU") { return "VS Настройка командной таблицы"; }
+            else if (translate == "hu-HU") { return "VS parancs tábla beállítása"; }
+            else if (translate == "pl-PL") { return "Konfiguracja Tablicy Komend VS"; }
             else { return "Log"; }
         }
 
@@ -182,6 +222,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "text"; }
             else if (translate == "ru-RU") { return "текст"; }
+            else if (translate == "hu-HU") { return "szöveg"; }
+            else if (translate == "pl-PL") { return "tekst"; }
             else { return "text"; }
         }
 
@@ -194,6 +236,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "file"; }
             else if (translate == "ru-RU") { return "файл"; }
+            else if (translate == "hu-HU") { return "fájl"; }
+            else if (translate == "pl-PL") { return "plik"; }
             else { return "file"; }
         }
 
@@ -206,6 +250,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Could not start RP"; }
             else if (translate == "ru-RU") { return "Не удалось запустить RP"; }
+            else if (translate == "hu-HU") { return "Nem sikerült elindítani az RP-t"; }
+            else if (translate == "pl-PL") { return "Nie udało się uruchomić RP"; }
             else { return "Could not start RP"; }
         }
 
@@ -218,6 +264,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "I'm working on something you're"; }
             else if (translate == "ru-RU") { return "Я работаю над тем, о чем"; }
+            else if (translate == "hu-HU") { return "Egy olyan projekten dolgozom,"; }
+            else if (translate == "pl-PL") { return "Pracuję nad czymś, o czym"; }
             else { return "I'm working on something you're"; }
         }
 
@@ -230,6 +278,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "not allowed to know about, sorry."; }
             else if (translate == "ru-RU") { return "тебе не положено знать, извини."; }
+            else if (translate == "hu-HU") { return "amit nem láthatsz, sajnálom."; }
+            else if (translate == "pl-PL") { return "nie możesz wiedzieć, sorry."; }
             else { return "not allowed to know about, sorry."; }
         }
 
@@ -242,6 +292,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Async void return type required"; }
             if (translate == "ru-RU") { return "Требуется тип возвращаемого значения Async void"; }
+            if (translate == "hu-HU") { return "Async void visszatérési érték szükséges"; }
+            if (translate == "pl-PL") { return "Zwracana wartość musi być typu Async void"; }
             else { return "Async void return type required"; }
         }
 
@@ -254,6 +306,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Unrecognized extension"; }
             if (translate == "ru-RU") { return "Незарегистрированное расширение"; }
+            if (translate == "hu-HU") { return "Ismeretlen bővítmény"; }
+            if (translate == "pl-PL") { return "Nierozpoznane rozszerzenie"; }
             else { return "Unrecognized extension"; }
         }
 
@@ -266,6 +320,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "No File."; }
             if (translate == "ru-RU") { return "Файл не выбран."; }
+            if (translate == "hu-HU") { return "Nincs fájl."; }
+            if (translate == "pl-PL") { return "Nie wybrano pliku."; }
             else { return "No File."; }
         }
 
@@ -278,6 +334,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Idling"; }
             if (translate == "ru-RU") { return "Выбирает проект"; }
+            if (translate == "hu-HU") { return "Üresjárat"; }
+            if (translate == "pl-PL") { return "Bezczynność"; }
             else { return "Idling"; }
         }
 
@@ -290,7 +348,9 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Developing"; }
             if (translate == "ru-RU") { return "Работает в проекте"; }
-            else { return "Idling"; }
+            if (translate == "hu-HU") { return "Fejleszti a következő fájlt: "; }
+            if (translate == "pl-PL") { return "Pracuję nad"; }
+            else { return "Developing"; }
         }
 
         /// <summary>
@@ -302,6 +362,8 @@ namespace DiscordRPforVS
         {
             if (translate == "en-US") { return "Async void return type required"; }
             if (translate == "ru-RU") { return "Требуется тип возвращаемого значения Async void"; }
+            if (translate == "hu-HU") { return "Async visszatérési érték szükséges"; }
+            if (translate == "pl-PL") { return "Zwracana wartość musi być typu Async void"; }
             else { return "Async void return type required"; }
         }
     }

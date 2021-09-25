@@ -40,15 +40,15 @@ Here's a demonstration of how it looks in Discord
 * The ability to turn Rich Presence completely on or off.
 * The ability to toggle it starting up at startup.
 * The ability to use secret mode.
-* Ability to use different languages. Available languages: English and Russian
+* Ability to use different languages. Available languages: English, Russian, Hungarian and Polish
 
 # Toggling Display
 A neat feature with this extension compared to others is you can completely customize your Rich Presence and display only what you want.
 
 Here's a demonstration of the settings
 <p align="center"> 
-  <img src="https://nothing-to-see-he.re/65mSaD.png" />
-  <img src="https://i.imgur.com/ZGnPIBj.png" />
+  <img src="https://i.imgur.com/EQIn4Nf.png" />
+  <img src="https://i.imgur.com/zhla0yV.png" />
 </p>
 
 # Contributing
