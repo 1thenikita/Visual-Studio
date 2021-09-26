@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [v5.5.4] (26-09-2021)
+###### Fixed error message "bad exception"!
+
+**SQUASHED BUGS**
+- Fixed error message "bad exception"!
+
 ## [v5.5.3] (24-09-2021)
 ###### Fixed bugs and added a switch to English!
 

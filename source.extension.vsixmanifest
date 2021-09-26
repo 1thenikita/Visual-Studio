@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="VisualDevelopment.drpcvs" Version="5.5.3" Language="en-US" Publisher="1TheNikita" />
+        <Identity Id="VisualDevelopment.drpcvs" Version="5.5.4" Language="en-US" Publisher="1TheNikita" />
         <DisplayName>Discord Rich Presence</DisplayName>
         <Description xml:space="preserve">A Discord Rich Presence extension for Visual Studio 2017 and 2019.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=1TheNikita.drpcvs2019</MoreInfo>
