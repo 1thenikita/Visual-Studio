@@ -193,10 +193,10 @@
             }
         }
 
-        protected override Int32 QueryClose(out Boolean canClose)
+        protected override void Dispose(Boolean disposing)
         {
-            this.Dispose();
-            return base.QueryClose(out canClose);
+            Dispose();
+            base.Dispose(disposing);
         }
 
         public void Dispose() => this.Discord.Dispose();
