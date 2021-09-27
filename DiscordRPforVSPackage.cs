@@ -174,6 +174,8 @@
                         this.Presence.Timestamps = this.CurrentTimestamps;
                     else if (!Settings.resetTimestamp && !overrideTimestampReset)
                         this.Presence.Timestamps = this.InitialTimestamps;
+                    else if (!Settings.resetTimestamp && overrideTimestampReset)
+                        this.Presence.Timestamps = this.CurrentTimestamps;
 
                     this.CurrentTimestamps = this.Presence.Timestamps;
                 }
