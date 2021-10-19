@@ -6,8 +6,6 @@ This extension enables on [Discord Rich Presence](https://discordapp.com/rich-pr
 
 As you're developing, this extension will automatically update your status on Discord to tell the world what you're coding.
 
-You can install the latest release [here](https://marketplace.visualstudio.com/items?itemName=VisualDevelopment.drpcvs2019)
-
 Here's a demonstration of how it looks in Discord
 <p align="center"> 
   <img src="https://i.imgur.com/AgCFkAH.png" />
