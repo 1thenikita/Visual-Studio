@@ -3,9 +3,9 @@
 
 
 This extension enables on [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 
-##2017 
-##2019 
-#**2022**
+## 2017 
+## 2019 
+# 2022
 
 As you're developing, this extension will automatically update your status on Discord to tell the world what you're coding.
 
