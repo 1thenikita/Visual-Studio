@@ -26,7 +26,7 @@
         private Boolean InitializedTimestamp;
         private Timestamps CurrentTimestamps;
         private Timestamps InitialTimestamps;
-        private readonly DiscordRpcClient Discord = new DiscordRpcClient("551675228691103796", logger: new DiscordLogger());
+        private readonly DiscordRpcClient Discord = new DiscordRpcClient("899778080812449793", logger: new DiscordLogger());
         private readonly RichPresence Presence = new RichPresence();
         private readonly Assets Assets = new Assets();
         private String versionString;
@@ -193,10 +193,10 @@
             }
         }
 
-        protected override void Dispose(Boolean disposing)
+        protected override Int32 QueryClose(out Boolean canClose)
         {
-            Dispose();
-            base.Dispose(disposing);
+            this.Dispose();
+            return base.QueryClose(out canClose);
         }
 
         public void Dispose() => this.Discord.Dispose();

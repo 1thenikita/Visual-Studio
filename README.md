@@ -1,27 +1,13 @@
 # DiscordRPCVS for Visual Studio
 
-<div align="center">
-    <p>
-        <a href="https://marketplace.visualstudio.com/items?itemName=1thenikita.drpcvs2019">
-            <img src="https://vsmarketplacebadge.apphb.com/version/1thenikita.drpcvs2019.svg" alt="VS Marketplace">
-        </a>
-        <a href="https://marketplace.visualstudio.com/items?itemName=1thenikita.drpcvs2019">
-            <img src="https://vsmarketplacebadge.apphb.com/installs-short/1thenikita.drpcvs2019.svg" alt="VS Marketplace">
-        </a>
-        <a href="https://marketplace.visualstudio.com/items?itemName=1thenikita.drpcvs2019">
-            <img src="https://vsmarketplacebadge.apphb.com/downloads-short/1thenikita.drpcvs2019.svg" alt="VS Marketplace">
-        </a>
-        <a href="https://discord.gg/X73DBfA">
-            <img src="https://canary.discordapp.com/api/guilds/442747591310966804/embed.png" alt="Discord server">
-        </a>
-    </p>
-</div>
 
-This extension enables on [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 2017 and 2019.
+
+This extension enables on [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 
+## 2017 
+## 2019 
+# Added 2022
 
 As you're developing, this extension will automatically update your status on Discord to tell the world what you're coding.
-
-You can install the latest release [here](https://marketplace.visualstudio.com/items?itemName=VisualDevelopment.drpcvs2019)
 
 Here's a demonstration of how it looks in Discord
 <p align="center"> 
@@ -47,7 +33,6 @@ A neat feature with this extension compared to others is you can completely cust
 
 Here's a demonstration of the settings
 <p align="center"> 
-  <img src="https://i.imgur.com/EQIn4Nf.png" />
   <img src="https://i.imgur.com/zhla0yV.png" />
 </p>
 
