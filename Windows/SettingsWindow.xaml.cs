@@ -72,16 +72,16 @@
         /// <param name="translate">Translate</param>
         private void SetLanguage(string translate)
         {
-            this.Title = Translates.SettingsWindow.Title(translate);
-            this.IsPresenceEnabled.Content = Translates.SettingsWindow.IsPresenceEnabled(translate);
-            this.IsFileNameShown.Content = Translates.SettingsWindow.IsFileNameShown(translate);
-            this.IsSolutionNameShown.Content = Translates.SettingsWindow.IsSolutionNameShown(translate);
-            this.IsTimestampShown.Content = Translates.SettingsWindow.IsTimestampShown(translate);
-            this.IsTimestampResetEnabled.Content = Translates.SettingsWindow.IsTimestampResetEnabled(translate);
-            this.IsLanguageImageLarge.Content = Translates.SettingsWindow.IsLanguageImageLarge(translate);
-            this.SecretMode.Content = Translates.SettingsWindow.SecretMode(translate);
-            this.LoadOnStartup.Content = Translates.SettingsWindow.LoadOnStartup(translate);
-            this.UseEnglishLanguage.Content = Translates.SettingsWindow.UseEnglish(translate);
+            this.Title = Settings.Default.LocalizationManager.CurrentLocalization.Title;
+            this.IsPresenceEnabled.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsPresenceEnabled;
+            this.IsFileNameShown.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsFileNameShown;
+            this.IsSolutionNameShown.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsSolutionNameShown;
+            this.IsTimestampShown.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsTimestampShown;
+            this.IsTimestampResetEnabled.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsTimestampResetEnabled;
+            this.IsLanguageImageLarge.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsLanguageImageLarge;
+            this.SecretMode.Content = Settings.Default.LocalizationManager.CurrentLocalization.SecretMode;
+            this.LoadOnStartup.Content = Settings.Default.LocalizationManager.CurrentLocalization.LoadOnStartup;
+            this.UseEnglishLanguage.Content = Settings.Default.LocalizationManager.CurrentLocalization.UseEnglish;
         }
     }
 }

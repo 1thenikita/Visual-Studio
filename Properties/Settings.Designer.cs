@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 
 namespace DiscordRPforVS.Properties {
-    
-    
+    using DiscordRPforVS.Localization.Models;
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
@@ -22,7 +22,10 @@ namespace DiscordRPforVS.Properties {
                 return defaultInstance;
             }
         }
-        
+
+        public LocalizationManager<RpLocalizationFile> LocalizationManager =
+             new LocalizationManager<RpLocalizationFile>("Translates");
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]

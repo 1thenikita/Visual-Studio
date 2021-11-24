@@ -61,7 +61,11 @@
     <Compile Include="BitmapToImageSourceConverter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DiscordLogger.cs" />
-    <Compile Include="Translates.cs" />
+    <Compile Include="Localization\Interfaces\ILocalizationFile.cs" />
+    <Compile Include="Localization\Interfaces\ILocalizationManager.cs" />
+    <Compile Include="Localization\Models\RpLocalizationFile.cs" />
+    <Compile Include="Localization\Models\JsonLocalizationFile.cs" />
+    <Compile Include="Localization\Models\LocalizationManager.cs" />
     <Compile Include="VSPackage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +112,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Translates\ru-RU.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

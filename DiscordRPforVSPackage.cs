@@ -56,7 +56,7 @@
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                     if (!this.Discord.Initialize())
-                        ActivityLog.LogError("DiscordRPforVS", $"{Translates.LogError(Settings.Default.translates)}");
+                        ActivityLog.LogError("DiscordRPforVS", $"{Settings.Default.LocalizationManager.CurrentLocalization.LogError}");
 
                 if (Settings.loadOnStartup)
                     await this.UpdatePresenceAsync(ide.ActiveDocument).ConfigureAwait(true);
@@ -88,7 +88,7 @@
 
             if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                 if (!this.Discord.Initialize())
-                    ActivityLog.LogError("DiscordRPforVS", $"{Translates.LogError(Settings.Default.translates)}");
+                    ActivityLog.LogError("DiscordRPforVS", $"{Settings.Default.LocalizationManager.CurrentLocalization.LogError}");
 
             if (windowActivated.Document != null)
                 await this.UpdatePresenceAsync(windowActivated.Document).ConfigureAwait(true);
@@ -110,7 +110,7 @@
                 {
                     if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                         if (!this.Discord.Initialize())
-                            ActivityLog.LogError("DiscordRPforVS", $"{Translates.LogError(Settings.Default.translates)}");
+                            ActivityLog.LogError("DiscordRPforVS", $"{Settings.Default.LocalizationManager.CurrentLocalization.LogError}");
 
                     this.Discord.ClearPresence();
                     return;
@@ -120,8 +120,8 @@
 
                 if (Settings.secretMode)
                 {
-                    this.Presence.Details = Translates.PresenceDetails(Settings.Default.translates);
-                    this.Presence.State = Translates.PresenceState(Settings.Default.translates);
+                    this.Presence.Details = Settings.Default.LocalizationManager.CurrentLocalization.PresenceDetails;
+                    this.Presence.State = Settings.Default.LocalizationManager.CurrentLocalization.PresenceState;
                     this.Assets.LargeImageKey = this.versionImageKey;
                     this.Assets.LargeImageText = this.versionString;
                     this.Assets.SmallImageKey = this.Assets.SmallImageText = "";
@@ -140,17 +140,17 @@
 
                 Boolean supported = language.Length > 0;
                 this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : this.versionImageKey;
-                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " " + Translates.File(Settings.Default.translates) : Translates.UnrecognizedExtension(Settings.Default.translates) : this.versionString;
+                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " " + Settings.Default.LocalizationManager.CurrentLocalization.File : Settings.Default.LocalizationManager.CurrentLocalization.UnrecognizedExtension : this.versionString;
                 this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : "text";
-                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " " + Translates.File(Settings.Default.translates) : Translates.UnrecognizedExtension(Settings.Default.translates);
+                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " " + Settings.Default.LocalizationManager.CurrentLocalization.File : Settings.Default.LocalizationManager.CurrentLocalization.UnrecognizedExtension;
 
                 if (Settings.showFileName)
-                    this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : Translates.NoFile(Settings.Default.translates);
+                    this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : Settings.Default.LocalizationManager.CurrentLocalization.NoFile;
 
                 if (Settings.showSolutionName)
                 {
                     Boolean idling = ide.Solution is null || String.IsNullOrEmpty(ide.Solution.FullName);
-                    this.Presence.State = idling ? Translates.Idling(Settings.Default.translates) : $"{Translates.Developing(Settings.Default.translates)} {Path.GetFileNameWithoutExtension(ide.Solution.FileName)}";
+                    this.Presence.State = idling ? Settings.Default.LocalizationManager.CurrentLocalization.Idling : $"{Settings.Default.LocalizationManager.CurrentLocalization.Developing} {Path.GetFileNameWithoutExtension(ide.Solution.FileName)}";
 
                     if (idling)
                     {
@@ -183,7 +183,7 @@
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                     if (!this.Discord.Initialize())
-                        ActivityLog.LogError("DiscordRPforVS", Translates.LogError(Settings.Default.translates));
+                        ActivityLog.LogError("DiscordRPforVS", Settings.Default.LocalizationManager.CurrentLocalization.LogError);
 
                 this.Discord.SetPresence(this.Presence);
             }
