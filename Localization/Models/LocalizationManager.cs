@@ -9,23 +9,10 @@
         public IList<T> Localizations { get; private set; }
         public T CurrentLocalization { get; private set; }
 
-        public System.Type GetAcceptableLocalizationFile(string filepath)
-        {
-            if (filepath == null)
-            {
-                throw new System.ArgumentNullException(nameof(filepath));
-            }
-
-            if (filepath.EndsWith(".json", System.StringComparison.InvariantCulture))
-            {
-                return typeof(JsonLocalizationFile);
-            }
-
-            throw new System.Exception($"No acceptable type for {filepath}");
-        }
-
         public LocalizationManager(string localizationFolder)
         {
+            Localizations = new List<T>();
+
             string[] localizationFiles = Directory.GetFiles(localizationFolder);
             
             if (localizationFiles.Length == 0)
@@ -61,6 +48,21 @@
         public void SelectLanguage(string language)
         {
             CurrentLocalization = GetLanguage(language);
+        }
+
+        public System.Type GetAcceptableLocalizationFile(string filepath)
+        {
+            if (filepath == null)
+            {
+                throw new System.ArgumentNullException(nameof(filepath));
+            }
+
+            if (filepath.EndsWith(".json", System.StringComparison.InvariantCulture))
+            {
+                return typeof(JsonLocalizationFile);
+            }
+
+            throw new System.Exception($"No acceptable type for {filepath}");
         }
     }
 }
