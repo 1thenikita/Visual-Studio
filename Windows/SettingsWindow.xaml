@@ -122,6 +122,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0">
             <Image Width="256" Source="{Binding Source={x:Static local:VSPackage.Logo}, Converter={StaticResource BitmapToImageSourceConverter}}" />
@@ -131,21 +132,21 @@
                 x:Name="IsPresenceEnabled"
                 VerticalAlignment="Top"
                 Content="Enable Discord Rich Presence"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="2">
             <ToggleButton
                 x:Name="IsFileNameShown"
                 Content="Show file name"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="3">
             <ToggleButton
                 x:Name="IsSolutionNameShown"
                 Content="Show solution name"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="4">
@@ -153,7 +154,7 @@
                 x:Name="IsTimestampShown"
                 Checked="IsTimestampShown_ValueChanged"
                 Content="Show timestamp"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}"
                 Unchecked="IsTimestampShown_ValueChanged" />
         </Border>
@@ -161,36 +162,52 @@
             <ToggleButton
                 x:Name="IsTimestampResetEnabled"
                 Content="Reset timestamp on file change"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="6">
             <ToggleButton
                 x:Name="IsLanguageImageLarge"
                 Content="Large language image"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="7">
             <ToggleButton
                 x:Name="SecretMode"
                 Content="Secret mode"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
         <Border Grid.Row="8">
             <ToggleButton
                 x:Name="LoadOnStartup"
                 Content="Load on startup"
-                Click="SaveSettings"
+                Click="OnSaveSettings"
                 Style="{StaticResource ResourceKey=DefaultToggle}" />
         </Border>
-        <Border Grid.Row="9">
-            <ToggleButton
-                x:Name="UseEnglishLanguage"
-                Content="Use English language"
-                Click="SaveSettings"
-                Style="{StaticResource ResourceKey=DefaultToggle}" />
+        <Separator Grid.Row="9"/>
+        <Border Grid.Row="10">
+            <TextBlock 
+                x:Name="LanguageLabel"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="{Binding Language}"/>
+        </Border>
+        <Border Grid.Row="11">
+            <ComboBox 
+                x:Name="LanguageComboBox"
+                ItemsSource="{Binding Localizations}"
+                SelectionChanged="OnLanguageComboBoxChanged"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Width="100">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LanguageName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Border>
     </Grid>
 </local:BaseDialogWindow>

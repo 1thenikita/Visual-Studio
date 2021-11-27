@@ -8,7 +8,7 @@
   "is_language_image_large": "Большая картинка языка программирования",
   "secret_mode": "Секретный режим",
   "load_on_startup": "Автоматический запуск",
-  "use_english": "Использовать Английский язык",
+  "language": "Язык",
   "settings": "Настройки",
   "text_document": "Текстовый",
   "log_document": "Log",

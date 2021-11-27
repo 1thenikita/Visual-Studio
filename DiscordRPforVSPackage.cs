@@ -1,6 +1,7 @@
 ﻿namespace DiscordRPforVS
 {
     using DiscordRPC;
+    using DiscordRPforVS.Localization.Models;
     using DiscordRPforVS.Properties;
     using EnvDTE;
     using Microsoft.VisualStudio.Shell;
@@ -32,6 +33,7 @@
         private String versionString;
         private String versionImageKey;
         public static Settings Settings { get; set; } = Settings.Default;
+        public static LocalizationManager<RpLocalizationFile> LocalizationManager { get; set; }
 
         protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
@@ -40,8 +42,10 @@
                 await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
                 Settings.Upgrade();
 
+                LocalizationManager = new LocalizationManager<RpLocalizationFile>("Translates");
+                LocalizationManager.SelectLanguage(Settings.translates);
+
                 // Writes the language used to the global variable
-                Settings.translates = Settings.Default.useEnglishLanguage ? "en-US" : CultureInfo.CurrentCulture.ToString();
                 Settings.Default.Save();
 
                 ide = GetGlobalService(typeof(SDTE)) as DTE;
@@ -56,7 +60,7 @@
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                     if (!this.Discord.Initialize())
-                        ActivityLog.LogError("DiscordRPforVS", $"{Settings.Default.LocalizationManager.CurrentLocalization.LogError}");
+                        ActivityLog.LogError("DiscordRPforVS", $"{LocalizationManager.CurrentLocalization.LogError}");
 
                 if (Settings.loadOnStartup)
                     await this.UpdatePresenceAsync(ide.ActiveDocument).ConfigureAwait(true);
@@ -88,7 +92,7 @@
 
             if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                 if (!this.Discord.Initialize())
-                    ActivityLog.LogError("DiscordRPforVS", $"{Settings.Default.LocalizationManager.CurrentLocalization.LogError}");
+                    ActivityLog.LogError("DiscordRPforVS", $"{LocalizationManager.CurrentLocalization.LogError}");
 
             if (windowActivated.Document != null)
                 await this.UpdatePresenceAsync(windowActivated.Document).ConfigureAwait(true);
@@ -110,7 +114,7 @@
                 {
                     if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                         if (!this.Discord.Initialize())
-                            ActivityLog.LogError("DiscordRPforVS", $"{Settings.Default.LocalizationManager.CurrentLocalization.LogError}");
+                            ActivityLog.LogError("DiscordRPforVS", $"{LocalizationManager.CurrentLocalization.LogError}");
 
                     this.Discord.ClearPresence();
                     return;
@@ -120,8 +124,8 @@
 
                 if (Settings.secretMode)
                 {
-                    this.Presence.Details = Settings.Default.LocalizationManager.CurrentLocalization.PresenceDetails;
-                    this.Presence.State = Settings.Default.LocalizationManager.CurrentLocalization.PresenceState;
+                    this.Presence.Details = LocalizationManager.CurrentLocalization.PresenceDetails;
+                    this.Presence.State = LocalizationManager.CurrentLocalization.PresenceState;
                     this.Assets.LargeImageKey = this.versionImageKey;
                     this.Assets.LargeImageText = this.versionString;
                     this.Assets.SmallImageKey = this.Assets.SmallImageText = "";
@@ -140,17 +144,17 @@
 
                 Boolean supported = language.Length > 0;
                 this.Assets.LargeImageKey = Settings.largeLanguage ? supported ? language[0] : "text" : this.versionImageKey;
-                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " " + Settings.Default.LocalizationManager.CurrentLocalization.File : Settings.Default.LocalizationManager.CurrentLocalization.UnrecognizedExtension : this.versionString;
+                this.Assets.LargeImageText = Settings.largeLanguage ? supported ? language[1] + " " + LocalizationManager.CurrentLocalization.File : LocalizationManager.CurrentLocalization.UnrecognizedExtension : this.versionString;
                 this.Assets.SmallImageKey = Settings.largeLanguage ? this.versionImageKey : supported ? language[0] : "text";
-                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " " + Settings.Default.LocalizationManager.CurrentLocalization.File : Settings.Default.LocalizationManager.CurrentLocalization.UnrecognizedExtension;
+                this.Assets.SmallImageText = Settings.largeLanguage ? this.versionString : supported ? language[1] + " " + LocalizationManager.CurrentLocalization.File : LocalizationManager.CurrentLocalization.UnrecognizedExtension;
 
                 if (Settings.showFileName)
-                    this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : Settings.Default.LocalizationManager.CurrentLocalization.NoFile;
+                    this.Presence.Details = !(document is null) ? Path.GetFileName(document.FullName) : LocalizationManager.CurrentLocalization.NoFile;
 
                 if (Settings.showSolutionName)
                 {
                     Boolean idling = ide.Solution is null || String.IsNullOrEmpty(ide.Solution.FullName);
-                    this.Presence.State = idling ? Settings.Default.LocalizationManager.CurrentLocalization.Idling : $"{Settings.Default.LocalizationManager.CurrentLocalization.Developing} {Path.GetFileNameWithoutExtension(ide.Solution.FileName)}";
+                    this.Presence.State = idling ? LocalizationManager.CurrentLocalization.Idling : $"{LocalizationManager.CurrentLocalization.Developing} {Path.GetFileNameWithoutExtension(ide.Solution.FileName)}";
 
                     if (idling)
                     {
@@ -183,7 +187,7 @@
 
                 if (!this.Discord.IsInitialized && !this.Discord.IsDisposed)
                     if (!this.Discord.Initialize())
-                        ActivityLog.LogError("DiscordRPforVS", Settings.Default.LocalizationManager.CurrentLocalization.LogError);
+                        ActivityLog.LogError("DiscordRPforVS", LocalizationManager.CurrentLocalization.LogError);
 
                 this.Discord.SetPresence(this.Presence);
             }

@@ -4,9 +4,7 @@
     using System;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Controls.Primitives;
-    using Properties;
-    using System.Globalization;
+    using DiscordRPforVS.Localization.Models;
 
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
@@ -17,7 +15,7 @@
 
         private void DiscordRPforVSSettingsWindow_Loaded(Object sender, RoutedEventArgs e)
         {
-            SetLanguage(DiscordRPforVSPackage.Settings.translates);
+            UpdateSettings();
 
             this.IsPresenceEnabled.IsChecked = DiscordRPforVSPackage.Settings.enabled;
             this.IsFileNameShown.IsChecked = DiscordRPforVSPackage.Settings.showFileName;
@@ -27,7 +25,11 @@
             this.IsLanguageImageLarge.IsChecked = DiscordRPforVSPackage.Settings.largeLanguage;
             this.SecretMode.IsChecked = DiscordRPforVSPackage.Settings.secretMode;
             this.LoadOnStartup.IsChecked = DiscordRPforVSPackage.Settings.loadOnStartup;
-            this.UseEnglishLanguage.IsChecked = DiscordRPforVSPackage.Settings.useEnglishLanguage;
+
+            this.LanguageComboBox.DataContext = DiscordRPforVSPackage.LocalizationManager;
+            this.LanguageComboBox.SelectedItem = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization;
+
+            this.LanguageLabel.DataContext = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization;
 
             this.IsTimestampShown_ValueChanged(sender, e);
         }
@@ -38,8 +40,12 @@
             this.IsLanguageImageLarge.SetValue(Grid.RowProperty, (Boolean)this.IsTimestampShown.IsChecked ? 4 : 5);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Async void return type required")]
-        private async void SaveSettings(Object sender, RoutedEventArgs e)
+        private void OnSaveSettings(Object sender, RoutedEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private async void SaveSettings()
         {
             DiscordRPforVSPackage.Settings.enabled = (Boolean)this.IsPresenceEnabled.IsChecked;
             DiscordRPforVSPackage.Settings.showFileName = (Boolean)this.IsFileNameShown.IsChecked;
@@ -49,11 +55,9 @@
             DiscordRPforVSPackage.Settings.largeLanguage = (Boolean)this.IsLanguageImageLarge.IsChecked;
             DiscordRPforVSPackage.Settings.secretMode = (Boolean)this.SecretMode.IsChecked;
             DiscordRPforVSPackage.Settings.loadOnStartup = (Boolean)this.LoadOnStartup.IsChecked;
-            DiscordRPforVSPackage.Settings.useEnglishLanguage = (Boolean)this.UseEnglishLanguage.IsChecked;
+            DiscordRPforVSPackage.Settings.translates = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.LanguageName;
 
-            DiscordRPforVSPackage.Settings.translates = DiscordRPforVSPackage.Settings.useEnglishLanguage ? "en-US" : CultureInfo.CurrentCulture.ToString();
             DiscordRPforVSPackage.Settings.Save();
-            SetLanguage(DiscordRPforVSPackage.Settings.translates);
 
             try
             {
@@ -67,21 +71,31 @@
         }
 
         /// <summary>
-        /// Set Language in settings
+        /// Updates settings view
         /// </summary>
-        /// <param name="translate">Translate</param>
-        private void SetLanguage(string translate)
+        private void UpdateSettings()
         {
-            this.Title = Settings.Default.LocalizationManager.CurrentLocalization.Title;
-            this.IsPresenceEnabled.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsPresenceEnabled;
-            this.IsFileNameShown.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsFileNameShown;
-            this.IsSolutionNameShown.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsSolutionNameShown;
-            this.IsTimestampShown.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsTimestampShown;
-            this.IsTimestampResetEnabled.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsTimestampResetEnabled;
-            this.IsLanguageImageLarge.Content = Settings.Default.LocalizationManager.CurrentLocalization.IsLanguageImageLarge;
-            this.SecretMode.Content = Settings.Default.LocalizationManager.CurrentLocalization.SecretMode;
-            this.LoadOnStartup.Content = Settings.Default.LocalizationManager.CurrentLocalization.LoadOnStartup;
-            this.UseEnglishLanguage.Content = Settings.Default.LocalizationManager.CurrentLocalization.UseEnglish;
+            this.Title = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.Title;
+            this.IsPresenceEnabled.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.IsPresenceEnabled;
+            this.IsFileNameShown.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.IsFileNameShown;
+            this.IsSolutionNameShown.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.IsSolutionNameShown;
+            this.IsTimestampShown.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.IsTimestampShown;
+            this.IsTimestampResetEnabled.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.IsTimestampResetEnabled;
+            this.IsLanguageImageLarge.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.IsLanguageImageLarge;
+            this.SecretMode.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.SecretMode;
+            this.LoadOnStartup.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.LoadOnStartup;
+            this.LanguageLabel.Text = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.Language;
+        }
+
+        private void OnLanguageComboBoxChanged(Object sender, SelectionChangedEventArgs e)
+        {
+            var senderComboBox = (ComboBox)sender;
+            var selectedLanguage = (RpLocalizationFile)senderComboBox.SelectedItem;
+
+            DiscordRPforVSPackage.LocalizationManager.SelectLanguage(selectedLanguage.LanguageName);
+
+            UpdateSettings();
+            SaveSettings();
         }
     }
 }

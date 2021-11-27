@@ -18,7 +18,7 @@
         public string IsLanguageImageLarge => LocalizedValues["is_language_image_large"];
         public string SecretMode => LocalizedValues["secret_mode"];
         public string LoadOnStartup => LocalizedValues["load_on_startup"];
-        public string UseEnglish => LocalizedValues["use_english"];
+        public string Language => LocalizedValues["language"];
         public string Settings => LocalizedValues["settings"];
         public string TextDocument => LocalizedValues["text_document"];
         public string LogDocument => LocalizedValues["log_document"];

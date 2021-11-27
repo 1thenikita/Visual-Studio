@@ -16,7 +16,7 @@
             { new String[] { ".FS", ".FSI", ".FSX", ".FSSCRIPT" }, new String[] { "fsharp", "F#" } },
             { new String[] { ".TS" }, new String[] { "typescript", "Typescript" } },
             { new String[] { ".CLASS", ".JAVA" }, new String[] { "java", "Java" } },
-            { new String[] { ".TXT" }, new String[] { "text", Settings.Default.LocalizationManager.CurrentLocalization.Text } },
+            { new String[] { ".TXT" }, new String[] { "text", DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.Text } },
             { new String[] { ".JSON" }, new String[] { "json", "JSON" } },
             { new String[] { ".PY", ".PYW", ".PYI", ".PYX" }, new String[] { "python", "Python" } },
             { new String[] { ".CSS" }, new String[] { "css", "CSS" } },
@@ -33,8 +33,8 @@
             { new String[]{ ".TOML" }, new String[] { "toml", "TOML" } },
             { new String[]{ ".LUA" }, new String[] { "lua", "Lua" } },
             { new String[]{ ".BAS", ".CLS", ".FRM", ".VBP", ".VBG" }, new String[] { "visualbasic", "VB" } },
-            { new String[]{ ".LOG" }, new String[] { "log", Settings.Default.LocalizationManager.CurrentLocalization.LogDocument } },
-            { new String[]{ ".VSCT" }, new String[] { "vs2019", Settings.Default.LocalizationManager.CurrentLocalization.LogDocument } }
+            { new String[]{ ".LOG" }, new String[] { "log", DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.LogDocument } },
+            { new String[]{ ".VSCT" }, new String[] { "vs2019", DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.LogDocument } }
         };
         public static readonly Dictionary<Int32, String> IdeVersions = new Dictionary<Int32, String>
         {
