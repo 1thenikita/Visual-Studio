@@ -85,6 +85,7 @@
             this.SecretMode.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.SecretMode;
             this.LoadOnStartup.Content = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.LoadOnStartup;
             this.LanguageLabel.Text = DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.Language;
+            this.VersionLabel.Text = $"{DiscordRPforVSPackage.LocalizationManager.CurrentLocalization.Version}: {typeof(DiscordRPforVSPackage).Assembly.GetName().Version}";
         }
 
         private void OnLanguageComboBoxChanged(Object sender, SelectionChangedEventArgs e)

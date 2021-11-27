@@ -34,6 +34,7 @@
         public string Idling => LocalizedValues["idling"];
         public string Developing => LocalizedValues["developing"];
         public string AvoidSync => LocalizedValues["avoid_sync"];
+        public string Version => LocalizedValues["version"];
         #endregion
     }
 }

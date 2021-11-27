@@ -8,7 +8,7 @@
     x:Name="DiscordRPforVSSettingsWindow"
     Title="Discord Rich Presence Settings"
     Width="500"
-    Height="500.689"
+    Height="530"
     d:DesignWidth="500"
     Background="#FF2D2D30"
     Foreground="White"
@@ -123,6 +123,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0">
             <Image Width="256" Source="{Binding Source={x:Static local:VSPackage.Logo}, Converter={StaticResource BitmapToImageSourceConverter}}" />
@@ -208,6 +209,13 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+        </Border>
+        <Border Grid.Row="12">
+            <TextBlock 
+                x:Name="VersionLabel"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Text="Version: "/>
         </Border>
     </Grid>
 </local:BaseDialogWindow>

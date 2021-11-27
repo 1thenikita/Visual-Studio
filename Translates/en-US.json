@@ -23,5 +23,6 @@
   "no_file": "No file selected",
   "idling": "Selects a project",
   "developing": "Works in the project",
-  "avoid_sync": "The return value type Async void is required"
+  "avoid_sync": "The return value type Async void is required",
+  "version": "Version: "
 }
