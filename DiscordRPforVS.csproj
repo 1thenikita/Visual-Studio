@@ -61,7 +61,12 @@
     <Compile Include="BitmapToImageSourceConverter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DiscordLogger.cs" />
-    <Compile Include="Translates.cs" />
+    <Compile Include="Localization\Interfaces\ILocalizationFile.cs" />
+    <Compile Include="Localization\Interfaces\ILocalizationManager.cs" />
+    <Compile Include="Localization\Models\LocalizationFileFactory.cs" />
+    <Compile Include="Localization\Models\RpLocalizationFile.cs" />
+    <Compile Include="Localization\Models\JsonLocalizationFile.cs" />
+    <Compile Include="Localization\Models\LocalizationManager.cs" />
     <Compile Include="VSPackage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +113,14 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Translates\ru-RU.json">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Translates\en-US.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -124,10 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DiscordRichPresence">
-      <Version>1.0.169</Version>
+      <Version>1.0.175</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
-      <Version>3.3.0-beta2.final</Version>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <Version>6.0.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -135,13 +148,13 @@
       <Version>1.1.57</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK">
-      <Version>16.0.206</Version>
+      <Version>16.10.31321.278</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Validation">
-      <Version>15.5.31</Version>
+      <Version>16.10.35</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools">
-      <Version>16.8.8</Version>
+      <Version>16.11.35</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
