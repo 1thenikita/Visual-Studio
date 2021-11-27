@@ -63,6 +63,7 @@
     <Compile Include="DiscordLogger.cs" />
     <Compile Include="Localization\Interfaces\ILocalizationFile.cs" />
     <Compile Include="Localization\Interfaces\ILocalizationManager.cs" />
+    <Compile Include="Localization\Models\LocalizationFileFactory.cs" />
     <Compile Include="Localization\Models\RpLocalizationFile.cs" />
     <Compile Include="Localization\Models\JsonLocalizationFile.cs" />
     <Compile Include="Localization\Models\LocalizationManager.cs" />
@@ -113,8 +114,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Translates\ru-RU.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

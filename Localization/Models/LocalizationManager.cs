@@ -20,12 +20,11 @@
                 throw new System.Exception($"Localization folder ({localizationFolder}) is empty");
             }
 
+            var localizationFileFactory = new LocalizationFileFactory();
+
             foreach (string filename in localizationFiles)
             {
-                System.Type acceptableType = GetAcceptableLocalizationFile(filename);
-                var acceptableFile = (T)acceptableType.GetConstructor(
-                    new System.Type[] { typeof(string) }).Invoke(new object[] { filename });
-
+                var acceptableFile = (T) localizationFileFactory.CreateLocalizationFile(filename);
                 Localizations.Add(acceptableFile);
             }
 
@@ -48,21 +47,6 @@
         public void SelectLanguage(string language)
         {
             CurrentLocalization = GetLanguage(language);
-        }
-
-        public System.Type GetAcceptableLocalizationFile(string filepath)
-        {
-            if (filepath == null)
-            {
-                throw new System.ArgumentNullException(nameof(filepath));
-            }
-
-            if (filepath.EndsWith(".json", System.StringComparison.InvariantCulture))
-            {
-                return typeof(JsonLocalizationFile);
-            }
-
-            throw new System.Exception($"No acceptable type for {filepath}");
         }
     }
 }
