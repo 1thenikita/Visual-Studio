@@ -1,5 +1,8 @@
 ﻿# Changelog
 
+## [v5.5.5] (28-01-2022)
+###### Added support for Visual Studio 2022!
+
 ## [v5.5.4] (26-09-2021)
 ###### Fixed error message "bad exception"!
 
