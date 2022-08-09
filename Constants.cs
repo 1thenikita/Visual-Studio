@@ -39,7 +39,8 @@
         public static readonly Dictionary<Int32, String> IdeVersions = new Dictionary<Int32, String>
         {
             { 15, "2017" },
-            { 16, "2019" }
+            { 16, "2019" },
+            { 17, "2022" }
         };
     }
 }

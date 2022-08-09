@@ -17,7 +17,7 @@
     </p>
 </div>
 
-This extension enables on [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 2017 and 2019.
+This extension enables on [Discord Rich Presence](https://discordapp.com/rich-presence) for Visual Studio 2017, 2019 and 2022.
 
 As you're developing, this extension will automatically update your status on Discord to tell the world what you're coding.
 
@@ -40,7 +40,7 @@ Here's a demonstration of how it looks in Discord
 * The ability to turn Rich Presence completely on or off.
 * The ability to toggle it starting up at startup.
 * The ability to use secret mode.
-* Ability to use different languages. Available languages: English, Russian, Hungarian and Polish
+* Ability to use different languages. Available languages: English, Russian, Hungarian, Polish and Chinese (Traditional)
 
 # Toggling Display
 A neat feature with this extension compared to others is you can completely customize your Rich Presence and display only what you want.
